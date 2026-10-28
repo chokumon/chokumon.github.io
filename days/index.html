@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>直問！ 毎日10問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;800&family=Noto+Sans+JP:wght@400;700&display=swap">
+<style>
+/* layout: phone-first single column; sticky day strip; page images stacked like a printed handout */
+:root{--ink:#1B2742;--accent:#EE6224;--paper:#F7F3EC;--card:#FFFFFF;--line:#E2DCD2;--muted:#6B6458;
+--display:"M PLUS 1p","Hiragino Sans","Noto Sans JP",sans-serif;--body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;color-scheme:light}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.7;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.wrap{max-width:560px;margin:0 auto}
+header{display:flex;flex-direction:column;gap:6px;padding-block:22px 14px}
+.brand{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;letter-spacing:.02em;color:var(--accent)}
+.brand small{display:block;font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.12em;margin-bottom:6px}
+.target{align-self:flex-start;background:var(--ink);color:#fff;border-radius:999px;padding:4px 14px;font-size:13px;font-weight:700}
+.target b{color:var(--accent)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:10px;border-bottom:1px solid var(--line)}
+.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.days a{display:block;text-align:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);
+border-radius:8px;padding:6px 0;font-family:var(--display);font-weight:800;font-size:14px;font-variant-numeric:tabular-nums}
+.days a[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.days a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.head{display:flex;flex-direction:column;gap:2px;padding-block:18px 10px}
+.head h1{font-family:var(--display);font-size:24px;margin:0;text-wrap:balance}
+.head p{margin:0;color:var(--muted);font-size:13px}
+.how{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13.5px;margin-block:0 14px}
+.how ol{margin:4px 0 0;padding-left:1.3em}
+.pages{display:flex;flex-direction:column;gap:12px}
+.pages img{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--line);border-radius:4px}
+.nextday{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.nextday a{flex:1;text-align:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-weight:700}
+footer{margin-top:26px;font-size:11.5px;color:var(--muted);line-height:1.6}
+@media (prefers-reduced-motion:no-preference){.pages img{animation:none}}
+</style>
+<style>*{box-sizing:border-box}img{max-width:100%}</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <a class="brand" href="../" style="text-decoration:none"><small>CHOKUMON</small>直問！</a>
+  <div class="target">TOEIC <b>730点</b>をめざす人へ</div>
+  <a href="../#plan" style="font-size:13px;color:var(--accent);font-weight:700">月額プランを見る</a>
+</header>
+<nav aria-label="Day"><div class="days" id="days"></div></nav>
+<section>
+  <div class="head"><h1 id="t">Day 1</h1><p id="s"></p></div>
+  <div class="how"><b>使い方</b><ol><li>1ページ目の10問を、1問20秒で解く（答えはメモ）</li><li>次のページから答え合わせ。空欄でどんな「問い」を立てるかを読む</li><li>まちがえた問題は、英文を前から声に出して読む</li></ol></div>
+  <div class="pages" id="pages"></div>
+  <div class="nextday" id="nav2"></div>
+</section>
+<footer>TOEICはETSの登録商標です。このページの問題はすべてオリジナルで、ETSの承認を受けたものではありません。レベルの目安は推定です。</footer>
+</div>
+<script>
+const D={"pages": {"1": [["../img/202610290041/d01-01.jpg", 817, 1560], ["../img/202610290041/d01-02.jpg", 817, 1733], ["../img/202610290041/d01-03.jpg", 817, 1068], ["../img/202610290041/d01-04.jpg", 817, 579], ["../img/202610290041/d01-05.jpg", 817, 1733], ["../img/202610290041/d01-06.jpg", 817, 443], ["../img/202610290041/d01-07.jpg", 817, 1733], ["../img/202610290041/d01-08.jpg", 817, 409], ["../img/202610290041/d01-09.jpg", 817, 1733], ["../img/202610290041/d01-10.jpg", 817, 262], ["../img/202610290041/d01-11.jpg", 817, 1692], ["../img/202610290041/d01-12.jpg", 817, 337], ["../img/202610290041/d01-13.jpg", 817, 1733], ["../img/202610290041/d01-14.jpg", 817, 299], ["../img/202610290041/d01-15.jpg", 817, 1733], ["../img/202610290041/d01-16.jpg", 817, 541], ["../img/202610290041/d01-17.jpg", 817, 1690], ["../img/202610290041/d01-18.jpg", 817, 1733], ["../img/202610290041/d01-19.jpg", 817, 337], ["../img/202610290041/d01-20.jpg", 817, 1733], ["../img/202610290041/d01-21.jpg", 817, 542], ["../img/202610290041/d01-22.jpg", 817, 1733], ["../img/202610290041/d01-23.jpg", 817, 641]], "2": [["../img/202610290041/d02-01.jpg", 817, 1733], ["../img/202610290041/d02-02.jpg", 817, 1680], ["../img/202610290041/d02-03.jpg", 817, 696], ["../img/202610290041/d02-04.jpg", 817, 546], ["../img/202610290041/d02-05.jpg", 817, 1466], ["../img/202610290041/d02-06.jpg", 817, 1466], ["../img/202610290041/d02-07.jpg", 817, 1537], ["../img/202610290041/d02-08.jpg", 817, 1501], ["../img/202610290041/d02-09.jpg", 817, 1396], ["../img/202610290041/d02-10.jpg", 817, 1422], ["../img/202610290041/d02-11.jpg", 817, 1428], ["../img/202610290041/d02-12.jpg", 817, 1575], ["../img/202610290041/d02-13.jpg", 817, 1433], ["../img/202610290041/d02-14.jpg", 817, 1545]], "3": [["../img/202610290041/d03-01.jpg", 817, 1623], ["../img/202610290041/d03-02.jpg", 817, 1600], ["../img/202610290041/d03-03.jpg", 817, 696], ["../img/202610290041/d03-04.jpg", 817, 647], ["../img/202610290041/d03-05.jpg", 817, 1733], ["../img/202610290041/d03-06.jpg", 817, 228], ["../img/202610290041/d03-07.jpg", 817, 1733], ["../img/202610290041/d03-08.jpg", 817, 1659], ["../img/202610290041/d03-09.jpg", 817, 1733], ["../img/202610290041/d03-10.jpg", 817, 333], ["../img/202610290041/d03-11.jpg", 817, 1645], ["../img/202610290041/d03-12.jpg", 817, 1504], ["../img/202610290041/d03-13.jpg", 817, 1733], ["../img/202610290041/d03-14.jpg", 817, 295], ["../img/202610290041/d03-15.jpg", 817, 1659], ["../img/202610290041/d03-16.jpg", 817, 1614], ["../img/202610290041/d03-17.jpg", 817, 1499]], "4": [["../img/202610290041/d04-01.jpg", 817, 1541], ["../img/202610290041/d04-02.jpg", 817, 1600], ["../img/202610290041/d04-03.jpg", 817, 984], ["../img/202610290041/d04-04.jpg", 817, 616], ["../img/202610290041/d04-05.jpg", 817, 1716], ["../img/202610290041/d04-06.jpg", 817, 409], ["../img/202610290041/d04-07.jpg", 817, 1702], ["../img/202610290041/d04-08.jpg", 817, 1690], ["../img/202610290041/d04-09.jpg", 817, 1690], ["../img/202610290041/d04-10.jpg", 817, 1733], ["../img/202610290041/d04-11.jpg", 817, 1697], ["../img/202610290041/d04-12.jpg", 817, 1733], ["../img/202610290041/d04-13.jpg", 817, 262], ["../img/202610290041/d04-14.jpg", 817, 1733], ["../img/202610290041/d04-15.jpg", 817, 1720], ["../img/202610290041/d04-16.jpg", 817, 295], ["../img/202610290041/d04-17.jpg", 817, 1684]], "5": [["../img/202610290041/d05-01.jpg", 817, 1543], ["../img/202610290041/d05-02.jpg", 817, 1640], ["../img/202610290041/d05-03.jpg", 817, 738], ["../img/202610290041/d05-04.jpg", 817, 610], ["../img/202610290041/d05-05.jpg", 817, 1733], ["../img/202610290041/d05-06.jpg", 817, 1669], ["../img/202610290041/d05-07.jpg", 817, 1685], ["../img/202610290041/d05-08.jpg", 817, 1733], ["../img/202610290041/d05-09.jpg", 817, 610], ["../img/202610290041/d05-10.jpg", 817, 1733], ["../img/202610290041/d05-11.jpg", 817, 149], ["../img/202610290041/d05-12.jpg", 817, 1701], ["../img/202610290041/d05-13.jpg", 817, 1598], ["../img/202610290041/d05-14.jpg", 817, 1733], ["../img/202610290041/d05-15.jpg", 817, 1733], ["../img/202610290041/d05-16.jpg", 817, 1733], ["../img/202610290041/d05-17.jpg", 817, 149]], "6": [["../img/202610290041/d06-01.jpg", 817, 1623], ["../img/202610290041/d06-02.jpg", 817, 1733], ["../img/202610290041/d06-03.jpg", 817, 492], ["../img/202610290041/d06-04.jpg", 817, 613], ["../img/202610290041/d06-05.jpg", 817, 1586], ["../img/202610290041/d06-06.jpg", 817, 1722], ["../img/202610290041/d06-07.jpg", 817, 295], ["../img/202610290041/d06-08.jpg", 817, 1733], ["../img/202610290041/d06-09.jpg", 817, 295], ["../img/202610290041/d06-10.jpg", 817, 1695], ["../img/202610290041/d06-11.jpg", 817, 409], ["../img/202610290041/d06-12.jpg", 817, 1690], ["../img/202610290041/d06-13.jpg", 817, 1733], ["../img/202610290041/d06-14.jpg", 817, 337], ["../img/202610290041/d06-15.jpg", 817, 1717], ["../img/202610290041/d06-16.jpg", 817, 1733], ["../img/202610290041/d06-17.jpg", 817, 1733], ["../img/202610290041/d06-18.jpg", 817, 262], ["../img/202610290041/d06-19.jpg", 817, 1733], ["../img/202610290041/d06-20.jpg", 817, 443]], "7": [["../img/202610290041/d07-01.jpg", 817, 1583], ["../img/202610290041/d07-02.jpg", 817, 1733], ["../img/202610290041/d07-03.jpg", 817, 450], ["../img/202610290041/d07-04.jpg", 817, 613], ["../img/202610290041/d07-05.jpg", 817, 1693], ["../img/202610290041/d07-06.jpg", 817, 337], ["../img/202610290041/d07-07.jpg", 817, 1733], ["../img/202610290041/d07-08.jpg", 817, 262], ["../img/202610290041/d07-09.jpg", 817, 1721], ["../img/202610290041/d07-10.jpg", 817, 262], ["../img/202610290041/d07-11.jpg", 817, 1733], ["../img/202610290041/d07-12.jpg", 817, 1733], ["../img/202610290041/d07-13.jpg", 817, 1702], ["../img/202610290041/d07-14.jpg", 817, 610], ["../img/202610290041/d07-15.jpg", 817, 1733], ["../img/202610290041/d07-16.jpg", 817, 409], ["../img/202610290041/d07-17.jpg", 817, 1733], ["../img/202610290041/d07-18.jpg", 817, 299], ["../img/202610290041/d07-19.jpg", 817, 1733], ["../img/202610290041/d07-20.jpg", 817, 1733], ["../img/202610290041/d07-21.jpg", 817, 262]], "8": [["../img/202610290041/d08-01.jpg", 817, 1689], ["../img/202610290041/d08-02.jpg", 817, 1518], ["../img/202610290041/d08-03.jpg", 817, 1314], ["../img/202610290041/d08-04.jpg", 817, 582], ["../img/202610290041/d08-05.jpg", 817, 1720], ["../img/202610290041/d08-06.jpg", 817, 375], ["../img/202610290041/d08-07.jpg", 817, 1733], ["../img/202610290041/d08-08.jpg", 817, 333], ["../img/202610290041/d08-09.jpg", 817, 1733], ["../img/202610290041/d08-10.jpg", 817, 262], ["../img/202610290041/d08-11.jpg", 817, 1720], ["../img/202610290041/d08-12.jpg", 817, 337], ["../img/202610290041/d08-13.jpg", 817, 1686], ["../img/202610290041/d08-14.jpg", 817, 1733], ["../img/202610290041/d08-15.jpg", 817, 409], ["../img/202610290041/d08-16.jpg", 817, 1733], ["../img/202610290041/d08-17.jpg", 817, 437], ["../img/202610290041/d08-18.jpg", 817, 1733], ["../img/202610290041/d08-19.jpg", 817, 371], ["../img/202610290041/d08-20.jpg", 817, 1733], ["../img/202610290041/d08-21.jpg", 817, 409], ["../img/202610290041/d08-22.jpg", 817, 1703], ["../img/202610290041/d08-23.jpg", 817, 544]], "9": [["../img/202610290041/d09-01.jpg", 817, 1571], ["../img/202610290041/d09-02.jpg", 817, 1637], ["../img/202610290041/d09-03.jpg", 817, 942], ["../img/202610290041/d09-04.jpg", 817, 582], ["../img/202610290041/d09-05.jpg", 817, 1733], ["../img/202610290041/d09-06.jpg", 817, 262], ["../img/202610290041/d09-07.jpg", 817, 1733], ["../img/202610290041/d09-08.jpg", 817, 295], ["../img/202610290041/d09-09.jpg", 817, 1718], ["../img/202610290041/d09-10.jpg", 817, 262], ["../img/202610290041/d09-11.jpg", 817, 1698], ["../img/202610290041/d09-12.jpg", 817, 1639], ["../img/202610290041/d09-13.jpg", 817, 1690], ["../img/202610290041/d09-14.jpg", 817, 337], ["../img/202610290041/d09-15.jpg", 817, 1733], ["../img/202610290041/d09-16.jpg", 817, 371], ["../img/202610290041/d09-17.jpg", 817, 1703], ["../img/202610290041/d09-18.jpg", 817, 262], ["../img/202610290041/d09-19.jpg", 817, 1733], ["../img/202610290041/d09-20.jpg", 817, 262], ["../img/202610290041/d09-21.jpg", 817, 1733], ["../img/202610290041/d09-22.jpg", 817, 375]], "10": [["../img/202610290041/d10-01.jpg", 817, 1628], ["../img/202610290041/d10-02.jpg", 817, 1560], ["../img/202610290041/d10-03.jpg", 817, 1476], ["../img/202610290041/d10-04.jpg", 817, 577], ["../img/202610290041/d10-05.jpg", 817, 1733], ["../img/202610290041/d10-06.jpg", 817, 333], ["../img/202610290041/d10-07.jpg", 817, 1733], ["../img/202610290041/d10-08.jpg", 817, 738], ["../img/202610290041/d10-09.jpg", 817, 1733], ["../img/202610290041/d10-10.jpg", 817, 149], ["../img/202610290041/d10-11.jpg", 817, 1733], ["../img/202610290041/d10-12.jpg", 817, 1733], ["../img/202610290041/d10-13.jpg", 817, 1711], ["../img/202610290041/d10-14.jpg", 817, 1612], ["../img/202610290041/d10-15.jpg", 817, 1733], ["../img/202610290041/d10-16.jpg", 817, 443], ["../img/202610290041/d10-17.jpg", 817, 1733], ["../img/202610290041/d10-18.jpg", 817, 1698], ["../img/202610290041/d10-19.jpg", 817, 409]]}, "subs": {"1": "空欄の後ろは「完成」？「穴あり」？", "2": "空欄に立つ「問い」で品詞を決める", "3": "「いつの話？」で時制を決める", "4": "主語は「する側？される側？」", "5": "「だれが？何が？」を先に決める", "6": "空欄の後ろは「文？名詞？」", "7": "1週目の振り返り　6つの問いを使い分ける", "8": "穴は「だれが？」「だれを？」「だれの？」", "9": "名詞は「する側？」「される側？」", "10": "空欄の前の言葉は、to？ -ing？ どっちを呼ぶ？"}, "lv": {"1": "550〜800", "2": "400〜550", "3": "500〜700", "4": "500〜750", "5": "550〜750", "6": "500〜700", "7": "500〜600", "8": "550〜850", "9": "500〜650", "10": "500〜750"}};
+const days=document.getElementById('days'),pages=document.getElementById('pages');
+for(let d=1;d<=10;d++){const a=document.createElement('a');a.href='#day'+d;a.textContent=d;a.dataset.d=d;a.setAttribute('aria-label','Day '+d);days.appendChild(a);}
+function show(){const m=(location.hash||'').match(/^#day(\d+)$/);let d=m?+m[1]:1;if(!D.pages[d])d=1;
+ document.getElementById('t').textContent='Day '+d;
+ document.getElementById('s').textContent=D.subs[d]+'　｜　レベルの目安 '+D.lv[d]+'点';
+ days.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',+a.dataset.d===d?'true':'false'));
+ pages.innerHTML='';D.pages[d].forEach((p,i)=>{const im=new Image();im.src=p[0];im.alt='Day '+d+' '+(i+1)+'ページ';im.loading=i<2?'eager':'lazy';im.width=p[1];im.height=p[2];pages.appendChild(im);});
+ const n2=document.getElementById('nav2');n2.innerHTML='';
+ if(d>1){const a=document.createElement('a');a.href='#day'+(d-1);a.textContent='← Day '+(d-1);n2.appendChild(a);}
+ if(d<10){const a=document.createElement('a');a.href='#day'+(d+1);a.textContent='Day '+(d+1)+' →';n2.appendChild(a);}
+ window.scrollTo(0,0);}
+addEventListener('hashchange',show);show();
+</script>
+
+</body>
+</html>
