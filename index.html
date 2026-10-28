@@ -134,6 +134,25 @@ h2{word-break:auto-phrase;font-weight:900;font-size:clamp(26px,7vw,40px);line-he
 .vs-col.good .en b{background:var(--scan);color:#05142E;padding:1px 4px;border-radius:4px;font-weight:600}
 .vs-col.bad .en s{text-decoration-color:var(--q);text-decoration-thickness:2px}
 
+
+/* people: instructor / producer — placeholders until names, bios and photos arrive */
+.people{display:grid;gap:16px}
+.person{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:start;border-radius:20px;padding:20px;background:var(--panel);border:1px solid var(--edge)}
+.ph{width:96px;height:96px;border-radius:24px;display:grid;place-items:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 50% 38%,rgba(79,216,255,.22) 0 18%,transparent 19%),radial-gradient(ellipse at 50% 108%,rgba(79,216,255,.18) 0 42%,transparent 43%),#0E1838;
+  border:1px dashed rgba(79,216,255,.45);color:var(--mute);font-size:11px}
+.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ph span{position:absolute;bottom:6px;left:0;right:0;text-align:center}
+.role{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;margin-bottom:6px}
+.role.t{background:rgba(79,216,255,.14);color:var(--scan);border:1px solid rgba(79,216,255,.35)}
+.role.p{background:rgba(255,107,44,.12);color:#FF9C73;border:1px solid rgba(255,107,44,.35)}
+.person h3{margin:0 0 6px;font-size:20px;line-height:1.35}
+.person p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.75}
+.person .tbd{color:#6E7AA3}
+.person ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.person li{font-size:12.5px;border:1px solid var(--edge);border-radius:8px;padding:2px 9px;color:var(--mute)}
+@media (max-width:420px){.person{grid-template-columns:76px 1fr;gap:14px;padding:18px}.ph{width:76px;height:76px;border-radius:20px}}
+
 /* plans */
 .plan-grid{display:grid;gap:22px}
 .plan{position:relative;border-radius:22px;padding:24px 22px;background:var(--panel);border:1px solid var(--edge)}
@@ -186,6 +205,9 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   .steps li{grid-template-columns:1fr;padding-bottom:0}
   .steps li::after{left:60px;right:-20px;top:24px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,var(--scan),transparent)}
   .vs{grid-template-columns:1fr 1fr}
+  .people{grid-template-columns:1fr 1fr}
+  .person{grid-template-columns:120px 1fr;gap:22px;padding:26px}
+  .ph{width:120px;height:120px;border-radius:28px}
   .plan-grid{grid-template-columns:1.2fr 1fr;align-items:stretch}
   .plan.pro{order:0}
   .sns{max-width:620px}
@@ -262,6 +284,33 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
           <p class="en">… ------- in detail at the <b>next regular meeting</b></p>
           <p>「いつの話？」を持ったまま読み進め、「次の定例会議で」＝これから。will be discussed を選びます。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="in">
+      <h2>つくっている人</h2>
+      <p class="sub">問題・解説・動画をつくっているメンバーです。</p>
+      <div class="people">
+        <article class="person">
+          <div class="ph" aria-label="講師の写真（準備中）"><span>写真</span><!-- 写真が届いたら <img src="img/teacher.jpg" alt="講師の写真"> --></div>
+          <div>
+            <span class="role t">講師</span>
+            <h3 class="tbd">講師名（準備中）</h3>
+            <p class="tbd">経歴・指導実績・ひとことをここに入れます。</p>
+            <ul><li>経歴1</li><li>経歴2</li><li>経歴3</li></ul>
+          </div>
+        </article>
+        <article class="person">
+          <div class="ph" aria-label="プロデューサーの写真（準備中）"><span>写真</span><!-- <img src="img/producer.jpg" alt="プロデューサーの写真"> --></div>
+          <div>
+            <span class="role p">プロデュース</span>
+            <h3 class="tbd">名前（準備中）</h3>
+            <p class="tbd">担当していること・ひとことをここに入れます。</p>
+            <ul><li>担当1</li><li>担当2</li></ul>
+          </div>
+        </article>
       </div>
     </div>
   </section>
