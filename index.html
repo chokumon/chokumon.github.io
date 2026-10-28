@@ -107,6 +107,66 @@ h1 .ln2{background:linear-gradient(90deg,var(--ink) 0%,var(--scan) 120%);-webkit
 .replay{margin-top:10px;background:none;border:0;color:var(--mute);font:inherit;font-size:13px;cursor:pointer;padding:6px 0;display:inline-flex;gap:6px;align-items:center}
 .replay:hover{color:var(--scan)}
 
+
+/* hero demo: one plain sentence read front-to-back, Japanese appears chunk by chunk */
+.flow{display:grid;gap:0;position:relative;margin-top:4px}
+.row{position:relative;padding:10px 0 12px 24px;opacity:.18;transition:opacity .4s}
+.row::before{content:"";position:absolute;left:5px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--edge);transition:background .3s,box-shadow .3s}
+.row::after{content:"";position:absolute;left:9px;top:32px;bottom:-16px;width:1px;background:var(--edge)}
+.row:last-child::after{display:none}
+.row.on{opacity:1}
+.row.on::before{background:var(--scan);box-shadow:0 0 10px var(--scan)}
+.row .en{display:block;font-family:var(--en);font-size:21px;font-weight:600;color:#fff;line-height:1.4}
+.row .ja{display:block;font-size:15px;color:var(--mute);margin-top:2px;opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s}
+.row.ja-on .ja{opacity:1;transform:none}
+.tag-q,.tag-a{display:inline-block;font-size:12px;font-weight:700;border-radius:8px;padding:2px 9px;margin-top:8px;opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s}
+.tag-q{background:var(--q);color:#fff}
+.tag-a{background:var(--scan);color:#05142E}
+.row.t-on .tag-q,.row.t-on .tag-a{opacity:1;transform:none}
+.done{margin:12px 0 0;border-radius:12px;padding:10px 14px;background:rgba(79,216,255,.1);border:1px solid rgba(79,216,255,.35);font-size:14.5px;line-height:1.65;opacity:0;transition:opacity .4s}
+.done.on{opacity:1}
+.done b{color:var(--scan)}
+
+/* merits */
+.merits{display:grid;gap:18px}
+.merit{border-radius:22px;padding:22px 20px;background:var(--panel);border:1px solid var(--edge)}
+.merit h3{margin:0 0 8px;font-size:clamp(19px,5.2vw,23px);line-height:1.4;word-break:auto-phrase;text-wrap:balance}
+.merit h3 .k{color:var(--scan)}
+.merit>p{margin:0 0 16px;color:var(--mute);font-size:15px}
+.ex{border-radius:16px;background:#0B1433;border:1px solid var(--edge);padding:14px 14px 12px}
+.ex-cap{font-size:12px;color:var(--mute);margin:0 0 8px}
+.ex-cap b{color:var(--ink)}
+.ex-note{font-size:13.5px;color:var(--mute);margin:10px 0 0;line-height:1.65}
+.ex-note b{color:var(--ink)}
+.order{display:grid;grid-template-columns:46px 46px 1fr;font-size:14px}
+.order .h{font-size:10.5px;color:var(--mute);padding-bottom:6px;text-align:center;white-space:nowrap}
+.order .n{display:grid;place-items:center;width:30px;height:30px;margin:6px 0;justify-self:center;border-radius:9px;font-family:var(--en);font-weight:700;font-size:14px}
+.order .n.back{background:rgba(255,107,44,.14);color:#FF9C73}
+.order .n.fwd{background:rgba(79,216,255,.14);color:var(--scan)}
+.order .c{padding:5px 0 5px 6px;border-bottom:1px dashed var(--edge)}
+.order .c.last{border-bottom:0}
+.order .c .e{display:block;font-family:var(--en);color:#fff;font-size:15px;line-height:1.35}
+.order .c .j{display:block;color:var(--mute);font-size:12.5px}
+.chain{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.ck{border-radius:10px;padding:6px 10px;background:rgba(255,255,255,.04);border:1px solid var(--edge);line-height:1.35}
+.ck .e{display:block;font-family:var(--en);color:#fff;font-size:15px}
+.ck .j{display:block;color:var(--mute);font-size:12.5px;margin-top:2px}
+.ck.ask{border-color:rgba(255,107,44,.5)}
+.ck.ask .j b{color:#FF9C73;font-weight:700}
+.arr{color:var(--scan);font-size:13px;line-height:1;padding:2px 0 2px 16px;transform:rotate(90deg);transform-origin:20px 50%;width:28px;text-align:left}
+.ex-sent{font-family:var(--en);font-size:17px;color:#fff;margin:0 0 10px;line-height:1.5}
+.ex-sent u{text-decoration:none;background:var(--scan);color:#05142E;border-radius:4px;padding:0 4px}
+.vsline{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:start;font-size:14px;line-height:1.6}
+.vsline .m{font-size:11px;font-weight:700;border-radius:6px;padding:2px 7px;margin-top:2px;white-space:nowrap}
+.vsline .m.x{background:#3A2440;color:#FF9C73}
+.vsline .m.o{background:var(--scan);color:#05142E}
+.vsline .x-t{color:#8A95BA}
+.vsline .o-t b{color:var(--scan)}
+.qbox{border-radius:16px;background:#0B1433;border:1px solid var(--edge);padding:14px 16px;margin-bottom:16px}
+.qbox p{margin:0;font-family:var(--en);font-size:15.5px;color:#fff;line-height:1.7}
+.qbox .bl{color:var(--q);font-weight:700}
+.qbox small{display:block;color:var(--mute);font-size:12.5px;margin-top:6px;font-family:var(--en)}
+
 /* sections */
 section{padding-block:64px;position:relative}
 .alt{background:var(--bg2)}
@@ -206,6 +266,9 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   .steps li{grid-template-columns:1fr;padding-bottom:0}
   .steps li::after{left:60px;right:-20px;top:24px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,var(--scan),transparent)}
   .vs{grid-template-columns:1fr 1fr}
+  .merits{grid-template-columns:1fr 1fr;gap:22px}
+  .merit{padding:28px 26px}
+  .row .en{font-size:24px}
   .people{grid-template-columns:1fr 1fr}
   .person{grid-template-columns:120px 1fr;gap:22px;padding:26px}
   .ph{width:120px;height:120px;border-radius:28px}
@@ -223,6 +286,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   <div class="in">
     <a class="logo" href="./">直問<i>！</i><em>CHOKUMON</em></a>
     <nav aria-label="メニュー">
+      <a class="hide-sm" href="#merit">直問とは</a>
       <a class="hide-sm" href="#how">解き方</a>
       <a class="hide-sm" href="#plan">月額プラン</a>
       <a class="hide-sm" href="days/#day1">無料の10問</a>
@@ -236,28 +300,93 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
     <div>
       <span class="target">TOEIC <b>730</b>点をめざす人へ</span>
       <h1><span class="ln">英語を前から読んで、</span><span class="ln ln2">問いで解く。</span></h1>
-      <p class="lead">TOEIC Part 5 の文法問題を、文法用語に頼らずに解くトレーニング。空欄で「いつの話？」「する側？される側？」と問いを立て、読み進めて答えを拾います。</p>
+      <p class="lead">英語を返り読みせず、前から順に理解するトレーニングです。読むのが速くなり、リスニングにもつながります。TOEIC の文法問題は、空欄で「問い」を立てて、文法用語なしで解きます。</p>
       <div class="cta-row">
         <a class="btn btn-main" href="#plan">月額プランを見る</a>
         <a class="btn btn-ghost" href="days/#day1">無料の10問を解く</a>
       </div>
     </div>
 
-    <div class="scanner" aria-label="直問の解き方の例">
-      <div class="sc-head"><span class="live">前から読んでいます</span><span>例題（オリジナル）　目安 <b>600</b>点</span></div>
-      <p class="sent" id="sent"></p>
-      <div class="opts" id="opts"></div>
-      <div class="notes">
-        <div class="note q" id="n1"><b>問い</b><span>空欄で「提案は いつの話？」</span></div>
-        <div class="note x" id="n2"><b>ワナ</b><span>last week は、キムさんが提案を出した時。空欄の時ではない</span></div>
-        <div class="note a" id="n3"><b>答え</b><span>next regular meeting ＝ これから。提案は話し合われる側</span></div>
+    <div class="scanner" aria-label="英文を前から読む例">
+      <div class="sc-head"><span class="live">前から読んでいます</span><span>例文</span></div>
+      <div class="flow">
+        <div class="row" id="r1"><span class="en">The man</span><span class="ja">その男の人は</span><span class="tag-q">問い：どんな男の人？</span></div>
+        <div class="row" id="r2"><span class="en">who is talking to Ken</span><span class="ja">ケンと話している</span><span class="tag-a">答え：ケンと話している人</span></div>
+        <div class="row" id="r3"><span class="en">is my father.</span><span class="ja">私の父です</span></div>
       </div>
+      <p class="done" id="done"><b>返り読みゼロ。</b>読んだ順に「ケンと話している男の人は、私の父」と分かりました。</p>
       <button class="replay" id="replay" type="button">↻ もう一度読む</button>
     </div>
   </div>
 </div>
 
 <main>
+  <section id="merit">
+    <div class="in">
+      <h2>前から読めると、<br>何が変わる？</h2>
+      <p class="sub">直問！のもとは「直読直解（前から読んで、前から分かる）」と「問い読み（分からないところで問いを立てる）」の2つです。</p>
+      <div class="merits">
+
+        <article class="merit">
+          <h3>速く読める。<br><span class="k">「時間が足りない」が減る。</span></h3>
+          <p>日本語の順に直そうとすると、目が文の後ろから前へ何度も戻ります。前から読めば、文を1回通るだけで意味が取れます。</p>
+          <div class="ex">
+            <div class="order">
+              <span class="h">返り読み</span><span class="h">前から</span><span></span>
+              <span class="n back">4</span><span class="n fwd">1</span><span class="c"><span class="e">I went to the store</span><span class="j">店に行った</span></span>
+              <span class="n back">3</span><span class="n fwd">2</span><span class="c"><span class="e">to buy some milk</span><span class="j">牛乳を買いに</span></span>
+              <span class="n back">2</span><span class="n fwd">3</span><span class="c"><span class="e">because we had none</span><span class="j">なかったから</span></span>
+              <span class="n back">1</span><span class="n fwd">4</span><span class="c last"><span class="e">at home.</span><span class="j">家に</span></span>
+            </div>
+            <p class="ex-note">返り読みは<b>下から上へ</b>戻って訳します。前からなら<b>上から下へ1回</b>。長い文ほど差が開きます。</p>
+          </div>
+        </article>
+
+        <article class="merit">
+          <h3>リスニングも、<br><span class="k">聞いた順に分かる。</span></h3>
+          <p>音声は流れて消えるので、戻って読み直せません。前から理解するクセがつくと、聞こえた順にそのまま意味が入ってきます。</p>
+          <div class="ex">
+            <p class="ex-cap"><b>聞こえた順</b>に意味を取る</p>
+            <div class="chain">
+              <span class="ck ask"><span class="e">Could you send me the file</span><span class="j">ファイルを送ってくれる？ <b>どのファイル？</b></span></span><span class="arr">→</span>
+              <span class="ck"><span class="e">we talked about</span><span class="j">話していたやつ</span></span><span class="arr">→</span>
+              <span class="ck"><span class="e">in the meeting?</span><span class="j">会議で</span></span>
+            </div>
+            <p class="ex-note">「どのファイル？」と問いを持って待つと、すぐ後ろで答えが聞こえてきます。読むときと同じ頭の使い方です。</p>
+          </div>
+        </article>
+
+        <article class="merit">
+          <h3>英語を、<br><span class="k">英語の順番のまま分かる。</span></h3>
+          <p>英語は、起きた順・目に入る順に言葉が並びます。日本語に並べ替えなくても、その順番で場面を思い浮かべれば意味が分かります。</p>
+          <div class="ex">
+            <p class="ex-cap"><b>場面の順</b>に思い浮かべる</p>
+            <div class="chain">
+              <span class="ck"><span class="e">She opened the door</span><span class="j">ドアを開けた</span></span><span class="arr">→</span>
+              <span class="ck"><span class="e">and saw a cat</span><span class="j">猫が見えた</span></span><span class="arr">→</span>
+              <span class="ck"><span class="e">sleeping</span><span class="j">寝ている</span></span><span class="arr">→</span>
+              <span class="ck"><span class="e">on her bed.</span><span class="j">ベッドの上で</span></span>
+            </div>
+            <p class="ex-note">映画のカメラのように、ドア → 猫 → 寝ている → ベッド。これが<b>英語を英語のまま分かる</b>状態です。</p>
+          </div>
+        </article>
+
+        <article class="merit">
+          <h3>むずかしい文法用語は、<br><span class="k">覚えなくていい。</span></h3>
+          <p>文のしくみを用語で覚えるかわりに、「何を？」「だれが？」「いつ？」と問うだけ。中学生にも分かる言葉で、同じことが分かります。</p>
+          <div class="ex">
+            <p class="ex-sent">This is <u>the book</u> I read last week.</p>
+            <div class="vsline">
+              <span class="m x">用語だと</span><span class="x-t">目的格の関係代名詞 which が省略されている</span>
+              <span class="m o">問いだと</span><span class="o-t">「読んだ、<b>何を？</b>」→ <b>the book</b>（この本）</span>
+            </div>
+            <p class="ex-note">「これは本。先週読んだ（何を？ → その本を）」。用語を知らなくても、問い1つで文がつながります。</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
   <section id="how" class="alt">
     <div class="in">
       <h2>前から読む。空欄で問う。<br>後ろで答えを拾う。</h2>
@@ -272,8 +401,10 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 
   <section>
     <div class="in">
-      <h2>近くの言葉で解くと、落ちる。</h2>
-      <p class="sub">上の例題で、2つの解き方を比べるとこうなります。</p>
+      <h2>TOEIC の空欄も、<br>問いで決まる。</h2>
+      <p class="sub">TOEIC Part 5 形式のオリジナル問題（目安 600点）で、2つの解き方を比べます。</p>
+      <div class="qbox"><p>The proposal that Ms. Kim presented to the board last week <span class="bl">-------</span> in detail at the next regular meeting, which is scheduled for December 3.</p>
+        <small>(A) was discussed　(B) has been discussed　(C) will be discussed　(D) discussed</small></div>
       <div class="vs">
         <div class="vs-col bad">
           <h3><span class="mk">×</span>空欄のまわりだけ見る</h3>
@@ -383,35 +514,18 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 <script>
 (function(){
   document.querySelectorAll('a[aria-disabled="true"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
-  // 例題：前から1かたまりずつ読む
-  const chunks=[["The proposal",""],["that Ms. Kim presented to the board",""],["last week","trap"],["BLANK",""],["in detail",""],["at the next regular meeting,","hit"],["which is scheduled for December 3.",""]];
-  const opts=["was discussed","has been discussed","will be discussed","discussed"], ans=2;
-  const sent=document.getElementById('sent'), box=document.getElementById('opts');
-  const els=chunks.map(([t])=>{const s=document.createElement('span');
-    if(t==="BLANK"){s.className='blank';s.textContent='-------';} else {s.className='w';s.textContent=t;}
-    sent.appendChild(s);sent.appendChild(document.createTextNode(' '));return s;});
-  const oe=opts.map((o,i)=>{const d=document.createElement('div');d.className='opt';d.textContent='('+'ABCD'[i]+') '+o;box.appendChild(d);return d;});
-  const n=[1,2,3].map(i=>document.getElementById('n'+i));
-  const B=els[3];
+  // 例文：前から1かたまりずつ読む
+  const R=[1,2,3].map(i=>document.getElementById('r'+i)), done=document.getElementById('done');
   let timers=[];
-  function answer(){oe.forEach((o,i)=>o.classList.add(i===ans?'right':'wrong'));B.textContent='will be discussed';B.classList.add('ans');}
-  function finalState(){els.forEach((e,i)=>{e.classList.remove('now');if(chunks[i][1])e.classList.add(chunks[i][1]);else if(e!==B)e.classList.add('past');});n.forEach(x=>x.classList.add('on'));answer();}
-  function reset(){timers.forEach(clearTimeout);timers=[];els.forEach(e=>e.className=(e===B)?'blank':'w');B.textContent='-------';
-    n.forEach(x=>x.classList.remove('on'));oe.forEach(o=>o.className='opt');}
+  const all=()=>{R.forEach(r=>r.classList.add('on','ja-on','t-on'));done.classList.add('on');};
+  function reset(){timers.forEach(clearTimeout);timers=[];R.forEach(r=>r.className='row');done.classList.remove('on');}
   function play(){reset();
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){finalState();return;}
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){all();return;}
     const at=(ms,f)=>timers.push(setTimeout(f,ms));
-    let t=400;
-    els.forEach((e,i)=>{
-      at(t,()=>{els.forEach(x=>x.classList.remove('now'));if(e!==B)e.classList.add('now');
-        if(i>0&&els[i-1]!==B&&!chunks[i-1][1])els[i-1].classList.add('past');
-        if(chunks[i][1]==='trap')at(500,()=>{e.classList.remove('now');e.classList.add('trap');n[1].classList.add('on');});
-        if(e===B)n[0].classList.add('on');
-        if(chunks[i][1]==='hit')at(500,()=>{e.classList.remove('now');e.classList.add('hit');n[2].classList.add('on');});
-      });
-      t+= chunks[i][1]?1700:(e===B?1400:900);
-    });
-    at(t,()=>{els.forEach(x=>x.classList.remove('now'));els[6].classList.add('past');answer();});
+    at(300,()=>R[0].classList.add('on'));at(900,()=>R[0].classList.add('ja-on'));at(1600,()=>R[0].classList.add('t-on'));
+    at(2900,()=>R[1].classList.add('on'));at(3500,()=>R[1].classList.add('ja-on'));at(4200,()=>R[1].classList.add('t-on'));
+    at(5400,()=>R[2].classList.add('on'));at(6000,()=>R[2].classList.add('ja-on'));
+    at(7000,()=>done.classList.add('on'));
   }
   document.getElementById('replay').addEventListener('click',play);
   const card=document.querySelector('.scanner');
