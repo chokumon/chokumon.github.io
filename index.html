@@ -79,10 +79,11 @@ h1 .ln2{background:linear-gradient(90deg,var(--ink) 0%,var(--scan) 120%);-webkit
 /* scanner card — the one memorable thing */
 .scanner{position:relative;border-radius:20px;padding:20px 18px 16px;background:linear-gradient(180deg,rgba(25,40,92,.85),rgba(15,25,60,.9));
   border:1px solid rgba(79,216,255,.25);box-shadow:0 30px 60px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06)}
-.sc-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--mute);margin-bottom:12px}
+.sc-head{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;align-items:center;font-size:12px;color:var(--mute);margin-bottom:12px}
 .sc-head .live{display:inline-flex;align-items:center;gap:6px}
 .sc-head .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--q);box-shadow:0 0 8px var(--q);animation:blink 1.6s infinite}
 @keyframes blink{50%{opacity:.25}}
+.sc-head>span{white-space:nowrap}
 .sc-head b{font-family:var(--en);color:var(--ink);font-weight:600}
 .sent{font-family:var(--en);font-size:18px;font-weight:400;line-height:2.1;margin:0;color:#C5CEE8;letter-spacing:.005em}
 .w{position:relative;transition:color .25s,background .25s;border-radius:4px;padding:2px 1px}
