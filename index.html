@@ -218,6 +218,19 @@ h1 .ln2{color:var(--q)}
 .alt{background:rgba(13,13,13,.72)}
 .dg{display:block;width:100%;height:auto}
 
+
+/* the big claim: English as English */
+.eigo{padding-block:72px 64px}
+.mega{font-weight:900;font-size:clamp(42px,11.5vw,96px);line-height:1.08;letter-spacing:-.005em;margin:0 0 18px;word-break:auto-phrase}
+.mega span{display:block;color:var(--q)}
+.eigo-lead{font-size:clamp(16px,4.3vw,20px);color:var(--ink);max-width:30em;margin:0 0 34px;line-height:1.8}
+.eg-grid{display:grid;gap:18px}
+.eg{border-radius:14px;padding:22px 20px 18px;background:rgba(18,18,18,.92);border:1px solid var(--edge)}
+.eg h3{margin:0 0 8px;font-size:clamp(19px,5.2vw,23px);line-height:1.4;word-break:auto-phrase;text-wrap:balance}
+.eg p{margin:0 0 16px;color:var(--mute);font-size:15px}
+.eg .eg-en{font-family:var(--en);color:#fff;font-size:15.5px;margin-bottom:8px}
+.eg .dg{margin-top:4px}
+
 /* sections */
 section{padding-block:64px;position:relative}
 .alt{background:var(--bg2)}
@@ -314,7 +327,10 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   .steps li{grid-template-columns:1fr;padding-bottom:0}
   .steps li::after{left:60px;right:-20px;top:24px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,var(--scan),transparent)}
   .vs{grid-template-columns:1fr 1fr}
-  .merits{grid-template-columns:1fr 1fr;gap:22px}
+  .merits{grid-template-columns:repeat(3,1fr);gap:20px}
+  .eg-grid{grid-template-columns:1fr 1fr;gap:22px}
+  .eg{padding:28px 26px 22px}
+  .eigo{padding-block:110px 96px}
   .merit{padding:28px 26px}
   .row .en{font-size:24px}
   .people{grid-template-columns:repeat(4,1fr);gap:18px}
@@ -336,7 +352,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   <div class="in">
     <a class="logo" href="./">直問<i>！</i><em>CHOKUMON</em></a>
     <nav aria-label="メニュー">
-      <a class="hide-sm" href="#merit">直問とは</a>
+      <a class="hide-sm" href="#eigo">直問とは</a>
       <a class="hide-sm" href="#how">解き方</a>
       <a class="hide-sm" href="#plan">月額プラン</a>
       <a class="hide-sm" href="days/#day1">無料の10問</a>
@@ -372,6 +388,69 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 </div>
 
 <main>
+  <section id="eigo" class="eigo">
+    <div class="in">
+      <h2 class="mega">英語を、<span>英語のまま理解する。</span></h2>
+      <p class="eigo-lead">日本語に訳してから分かるのではなく、英語を見た瞬間・聞いた瞬間に意味が浮かぶ。直問！がめざすのは、この状態です。</p>
+      <div class="eg-grid">
+        <article class="eg">
+          <h3>訳すと、遠回りになる</h3>
+          <p>「英語 → 日本語に訳す → 並べ替える → 意味」と、頭の中で何回も乗り換えています。英語のまま分かれば、意味へ直行できます。</p>
+          <svg class="dg" viewBox="0 0 340 186" role="img" aria-label="訳す読み方は、英語から日本語に訳し、並べ替えてから意味にたどり着く遠回り。英語のまま理解すると、英語から意味へまっすぐ。">
+<text x="4" y="16" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" font-weight="700" fill="#9A9A9A">訳す読み方：頭の中で何回も乗り換える</text>
+<path d="M24 52 C78 52 76 94 128 94 C182 94 180 52 232 52 C282 52 284 94 314 94" fill="none" stroke="#6E6E6E" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="24" cy="52" r="6" fill="#111" stroke="#6E6E6E" stroke-width="2"/><text x="24" y="40" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" text-anchor="middle" fill="#9A9A9A">英語</text>
+<circle cx="128" cy="94" r="6" fill="#111" stroke="#6E6E6E" stroke-width="2"/><text x="128" y="114" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" text-anchor="middle" fill="#9A9A9A">日本語に訳す</text>
+<circle cx="232" cy="52" r="6" fill="#111" stroke="#6E6E6E" stroke-width="2"/><text x="232" y="40" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" text-anchor="middle" fill="#9A9A9A">並べ替える</text>
+<circle cx="314" cy="94" r="7" fill="#111" stroke="#6E6E6E" stroke-width="2"/><text x="334" y="114" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" text-anchor="end" fill="#9A9A9A">やっと意味</text>
+<text x="4" y="146" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" font-weight="700" fill="#FF6A1A">英語のまま：見た瞬間に、意味へ直行</text>
+<path d="M24 170 H306" stroke="#FF6A1A" stroke-width="3" stroke-linecap="round"/>
+<circle cx="24" cy="170" r="6" fill="#111" stroke="#FF6A1A" stroke-width="2.4"/>
+<circle cx="314" cy="170" r="10" fill="#FF6A1A"/><circle cx="314" cy="170" r="16" fill="none" stroke="#FF6A1A" stroke-opacity=".35" stroke-width="2"/>
+<text x="46" y="164" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" fill="#fff">英語</text><text x="290" y="164" font-family="Zen Kaku Gothic New, sans-serif" font-size="11.5" font-weight="700" text-anchor="end" fill="#FF6A1A">意味</text>
+</svg>
+        </article>
+        <article class="eg">
+          <h3>単語は、訳語ではなくイメージで</h3>
+          <p>on を「〜の上に」と覚えると、on the wall（壁に）や on the ceiling（天井に）で迷います。「くっついている」というイメージでつかめば、全部1つで分かります。</p>
+          <svg class="dg" viewBox="0 0 300 152" role="img" aria-label="on はくっついているイメージ。テーブルに、壁に、天井に、どれも同じ on。">
+<text x="2" y="13" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" font-weight="700" fill="#FF6A1A">on ＝「くっついている」</text>
+<rect x="4" y="22" width="92" height="92" rx="10" fill="#0D0D0D" stroke="#3A3A3A"/><path d="M18 86H82M24 86V104M76 86V104" stroke="#6E6E6E" stroke-width="2.4" stroke-linecap="round"/><path d="M40 64h20l-2 22h-16z" fill="rgba(255,106,26,.14)" stroke="#FF6A1A" stroke-width="1.6" stroke-linejoin="round"/><path d="M60 69q7 1 6 7t-7 5" fill="none" stroke="#FF6A1A" stroke-width="1.5"/><path d="M41 86H59" stroke="#FF6A1A" stroke-width="4" stroke-linecap="round"/><text x="50" y="132" font-family="Sora, sans-serif" font-size="11.5" text-anchor="middle" fill="#fff">on the table</text><text x="50" y="147" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">テーブルに</text><rect x="104" y="22" width="92" height="92" rx="10" fill="#0D0D0D" stroke="#3A3A3A"/><path d="M128 30V108" stroke="#6E6E6E" stroke-width="3" stroke-linecap="round"/><rect x="130" y="46" width="38" height="30" rx="2" fill="rgba(255,106,26,.14)" stroke="#FF6A1A" stroke-width="1.6"/><path d="M136 70l8-9 6 6 5-4 8 7" fill="none" stroke="#FF6A1A" stroke-width="1.4" stroke-linejoin="round"/><path d="M128 48V74" stroke="#FF6A1A" stroke-width="4" stroke-linecap="round"/><text x="150" y="132" font-family="Sora, sans-serif" font-size="11.5" text-anchor="middle" fill="#fff">on the wall</text><text x="150" y="147" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">壁に</text><rect x="204" y="22" width="92" height="92" rx="10" fill="#0D0D0D" stroke="#3A3A3A"/><path d="M214 34H286" stroke="#6E6E6E" stroke-width="3" stroke-linecap="round"/><path d="M234 36A16 16 0 0 0 266 36Z" fill="rgba(255,106,26,.14)" stroke="#FF6A1A" stroke-width="1.6"/><path d="M250 58v8M238 54l-5 6M262 54l5 6" stroke="#FF6A1A" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round"/><path d="M235 35H265" stroke="#FF6A1A" stroke-width="4" stroke-linecap="round"/><text x="250" y="132" font-family="Sora, sans-serif" font-size="11.5" text-anchor="middle" fill="#fff">on the ceiling</text><text x="250" y="147" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">天井に</text>
+</svg>
+        </article>
+        <article class="eg">
+          <h3>文は、場面の順に思い浮かべる</h3>
+          <p class="eg-en">She opened the door and saw a cat sleeping on her bed.</p>
+          <p>英語は、起きた順・目に入る順に並びます。その順番で場面を浮かべれば、日本語に並べ替えなくても分かります。</p>
+          <svg class="dg" viewBox="0 0 300 146" role="img" aria-label="ドアを開けた、猫が見えた、寝ている、ベッドの上で。英語は場面の順に並ぶ。"><defs>
+<marker id="gF" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6E6E6E"/></marker>
+<marker id="oF" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FF6A1A"/></marker>
+</defs>
+<text x="2" y="14" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" font-weight="700" fill="#FF6A1A">英語は「場面の順」に並ぶ</text>
+<rect x="10" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><rect x="29" y="38" width="26" height="40" fill="none" stroke="#3A3A3A"/><path d="M29 38L47 43V73L29 78z" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><circle cx="43" cy="58" r="1.6" fill="#FF6A1A"/><text x="42" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">the door</text><text x="42" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">ドアを開けた</text><path d="M77 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="83" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><path d="M104 52l2-11 6 6h6l6-6 2 11" fill="none" stroke="#FF6A1A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="115" cy="58" r="11" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><circle cx="111" cy="56" r="1.5" fill="#FF6A1A"/><circle cx="119" cy="56" r="1.5" fill="#FF6A1A"/><path d="M113 61.5q2 2 4 0" fill="none" stroke="#FF6A1A" stroke-width="1.3"/><text x="115" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">a cat</text><text x="115" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">猫が見えた</text><path d="M150 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="156" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><ellipse cx="188" cy="66" rx="17" ry="9" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><path d="M173 61l1-7 5 4" fill="none" stroke="#FF6A1A" stroke-width="1.5" stroke-linejoin="round"/><path d="M177 66q2 1.5 4 0" fill="none" stroke="#FF6A1A" stroke-width="1.3"/><text x="194" y="50" font-family="Sora, sans-serif" font-size="10" font-weight="700" fill="#FF6A1A">z</text><text x="201" y="42" font-family="Sora, sans-serif" font-size="12" font-weight="700" fill="#FF6A1A">z</text><text x="188" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">sleeping</text><text x="188" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">寝ている</text><path d="M223 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="229" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><path d="M239 46V78M283 66V78M239 66H283" stroke="#FF6A1A" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="239" y="58" width="44" height="8" rx="2" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.5"/><rect x="242" y="51" width="12" height="7" rx="2.5" fill="none" stroke="#FF6A1A" stroke-width="1.4"/><text x="261" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">on her bed</text><text x="261" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">ベッドの上で</text>
+<path d="M12 138H286" stroke="#FF6A1A" stroke-width="2.4" fill="none" marker-end="url(#oF)"/>
+</svg>
+        </article>
+        <article class="eg">
+          <h3>いきなり英語で考えなくていい</h3>
+          <p>最初から日本語をゼロにするのは無理があります。直問！は、まず「前から」と「問い」で並べ替えをなくし、そこから英語のまま分かる段階へ進みます。</p>
+          <svg class="dg" viewBox="0 0 300 150" role="img" aria-label="1段目は返り読み、2段目は前から日本語で読む直問！、3段目は英語のまま分かる。">
+<rect x="6" y="100" width="92" height="44" rx="6" fill="#161616" stroke="#3A3A3A"/>
+<text x="52" y="119" font-family="Zen Kaku Gothic New, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#9A9A9A">返り読み</text><text x="52" y="134" font-family="Zen Kaku Gothic New, sans-serif" font-size="10" text-anchor="middle" fill="#6E6E6E">日本語に並べ替え</text>
+<rect x="104" y="70" width="92" height="74" rx="6" fill="rgba(255,106,26,.14)" stroke="#FF6A1A"/>
+<text x="150" y="89" font-family="Zen Kaku Gothic New, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#fff">前から読む</text><text x="150" y="104" font-family="Zen Kaku Gothic New, sans-serif" font-size="10" text-anchor="middle" fill="#9A9A9A">前から日本語で</text>
+<rect x="124" y="114" width="52" height="18" rx="9" fill="#FF6A1A"/><text x="150" y="127" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" font-weight="900" text-anchor="middle" fill="#000">直問！</text>
+<rect x="202" y="40" width="92" height="104" rx="6" fill="#FF6A1A"/>
+<text x="248" y="59" font-family="Zen Kaku Gothic New, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#000">英語のまま</text><text x="248" y="74" font-family="Zen Kaku Gothic New, sans-serif" font-size="10" text-anchor="middle" fill="#000" fill-opacity=".75">訳さずに分かる</text>
+<path d="M52 92 Q100 40 140 62" fill="none" stroke="#FF6A1A" stroke-opacity=".5" stroke-width="1.6" stroke-dasharray="3 4"/>
+<path d="M150 62 Q196 12 238 32" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-dasharray="3 4"/>
+<path d="M232 26l7 6-9 3" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="merit">
     <div class="in">
       <h2>前から読めると、<br>何が変わる？</h2>
@@ -440,23 +519,6 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 <path d="M8 162H286" stroke="#FF6A1A" stroke-width="2.4" fill="none" marker-end="url(#oL)"/>
 </svg>
             <p class="ex-note">「どのファイル？」と問いを持って待つと、すぐ後ろで答えが聞こえてきます。読むときと同じ頭の使い方です。</p>
-          </div>
-        </article>
-
-        <article class="merit">
-          <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#FF6A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="28" height="16" rx="2"/><path d="M11.3 8v16M20.6 8v16"/><rect x="5" y="12" width="3.5" height="8" rx=".5" fill="#FF6A1A" stroke="none"/><circle cx="16" cy="16" r="2.6" fill="#FF6A1A" stroke="none"/><path d="M23 19h5M23 19v-3"/></svg></div>
-          <h3>英語を、<br><span class="k">英語の順番のまま分かる。</span></h3>
-          <p>英語は、起きた順・目に入る順に言葉が並びます。日本語に並べ替えなくても、その順番で場面を思い浮かべれば意味が分かります。</p>
-          <div class="ex">
-            <svg class="dg" viewBox="0 0 300 146" role="img" aria-label="ドアを開けた、猫が見えた、寝ている、ベッドの上で。英語は場面の順に並ぶ。"><defs>
-<marker id="gF" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6E6E6E"/></marker>
-<marker id="oF" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FF6A1A"/></marker>
-</defs>
-<text x="2" y="14" font-family="Zen Kaku Gothic New, sans-serif" font-size="13" font-weight="700" fill="#FF6A1A">英語は「場面の順」に並ぶ</text>
-<rect x="10" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><rect x="29" y="38" width="26" height="40" fill="none" stroke="#3A3A3A"/><path d="M29 38L47 43V73L29 78z" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><circle cx="43" cy="58" r="1.6" fill="#FF6A1A"/><text x="42" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">the door</text><text x="42" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">ドアを開けた</text><path d="M77 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="83" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><path d="M104 52l2-11 6 6h6l6-6 2 11" fill="none" stroke="#FF6A1A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="115" cy="58" r="11" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><circle cx="111" cy="56" r="1.5" fill="#FF6A1A"/><circle cx="119" cy="56" r="1.5" fill="#FF6A1A"/><path d="M113 61.5q2 2 4 0" fill="none" stroke="#FF6A1A" stroke-width="1.3"/><text x="115" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">a cat</text><text x="115" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">猫が見えた</text><path d="M150 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="156" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><ellipse cx="188" cy="66" rx="17" ry="9" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.6"/><path d="M173 61l1-7 5 4" fill="none" stroke="#FF6A1A" stroke-width="1.5" stroke-linejoin="round"/><path d="M177 66q2 1.5 4 0" fill="none" stroke="#FF6A1A" stroke-width="1.3"/><text x="194" y="50" font-family="Sora, sans-serif" font-size="10" font-weight="700" fill="#FF6A1A">z</text><text x="201" y="42" font-family="Sora, sans-serif" font-size="12" font-weight="700" fill="#FF6A1A">z</text><text x="188" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">sleeping</text><text x="188" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">寝ている</text><path d="M223 54l4 4-4 4" fill="none" stroke="#FF6A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="229" y="26" width="64" height="64" rx="8" fill="#0D0D0D" stroke="#FF6A1A" stroke-opacity=".7"/><path d="M239 46V78M283 66V78M239 66H283" stroke="#FF6A1A" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="239" y="58" width="44" height="8" rx="2" fill="rgba(255,106,26,.12)" stroke="#FF6A1A" stroke-width="1.5"/><rect x="242" y="51" width="12" height="7" rx="2.5" fill="none" stroke="#FF6A1A" stroke-width="1.4"/><text x="261" y="106" font-family="Sora, sans-serif" font-size="11" text-anchor="middle" fill="#fff">on her bed</text><text x="261" y="121" font-family="Zen Kaku Gothic New, sans-serif" font-size="10.5" text-anchor="middle" fill="#9A9A9A">ベッドの上で</text>
-<path d="M12 138H286" stroke="#FF6A1A" stroke-width="2.4" fill="none" marker-end="url(#oF)"/>
-</svg>
-            <p class="ex-note">映画のカメラのように、ドア → 猫 → 寝ている → ベッド。これが<b>英語を英語のまま分かる</b>状態です。</p>
           </div>
         </article>
 
