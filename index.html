@@ -362,6 +362,18 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 .pics4 figure{position:relative}
 @media (min-width:560px){.pics4{grid-template-columns:repeat(4,1fr)}}
 @media (min-width:880px){.steps li::after{left:68px;top:28px}}
+
+/* マスコット（白い鳥）*/
+.bird{display:block;height:auto;pointer-events:none;user-select:none}
+.bird-hero{position:absolute;right:20px;bottom:calc(100% - 11px);width:auto;height:112px;z-index:2}
+.scanner{margin-top:96px}
+.banner{position:relative;margin-top:100px}
+.bird-banner{position:absolute;right:22px;bottom:calc(100% - 10px);width:auto;height:100px}
+.bird-say{display:flex;align-items:flex-end;gap:12px;margin-top:18px;max-width:340px}
+.bird-say .bird{width:auto;height:116px;flex:none}
+.bird-say .phone-cap{position:relative;margin:0 0 46px;text-align:left;color:var(--ink);font-size:14px;line-height:1.6;background:#FAF3E2;color:#0A0A0A;border-radius:14px;padding:10px 14px}
+.bird-say .phone-cap::before{content:"";position:absolute;left:-7px;bottom:14px;border:8px solid transparent;border-right-color:#FAF3E2;border-left:0}
+@media (min-width:880px){.bird-hero{height:150px}.scanner{margin-top:124px}.banner{margin-top:120px}.bird-banner{height:126px}}
 </style>
 </head>
 <body>
@@ -395,6 +407,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
     </div>
 
     <div class="scanner" aria-label="英文を前から読む例">
+      <img class="bird bird-hero" id="bird" src="img/mascot/think.webp" alt="" width="203" height="320">
       <div class="sc-head"><span class="live">前から読んでいます</span><span>例文</span></div>
       <div class="flow">
         <div class="row" id="r1"><span class="en">The man</span><span class="ja">その男の人は</span><span class="tag-q">問い：どんな男の人？</span></div>
@@ -483,6 +496,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
       <h2>前から読めると、<br>何が変わる？</h2>
       <p class="sub">直問！のもとは「直読直解（前から読んで、前から分かる）」と「問い読み（分からないところで問いを立てる）」の2つです。</p>
       <div class="banner" role="img" aria-label="返り読みは目が後ろから前へ3回もどる。前から読むと1回で進む。">
+        <img class="bird bird-banner" src="img/mascot/annoyed.webp" alt="" width="203" height="320" loading="lazy">
         <svg viewBox="0 0 340 176" font-family="Zen Kaku Gothic New, sans-serif">
 <text x="4" y="15" font-size="14" font-weight="700" fill="#B8B0A1">返り読み：目が後ろから3回もどる</text>
 <g filter="url(#hd)"><rect x="10" y="50" width="74" height="28" rx="3" fill="#FAF3E2" fill-opacity=".45" stroke="#0A0A0A" stroke-width="2"/><rect x="92" y="50" width="74" height="28" rx="3" fill="#FAF3E2" fill-opacity=".45" stroke="#0A0A0A" stroke-width="2"/><rect x="174" y="50" width="74" height="28" rx="3" fill="#FAF3E2" fill-opacity=".45" stroke="#0A0A0A" stroke-width="2"/><rect x="256" y="50" width="74" height="28" rx="3" fill="#FAF3E2" fill-opacity=".45" stroke="#0A0A0A" stroke-width="2"/><path d="M293 46 Q252.0 20 217 44" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M213 34 L217 44 L227 40" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M211 46 Q170.0 20 135 44" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M131 34 L135 44 L145 40" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M129 46 Q88.0 20 53 44" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M49 34 L53 44 L63 40" fill="none" stroke="#B8B0A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
@@ -663,7 +677,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
             </div>
           </div>
         </div>
-        <p class="phone-cap">公式LINEに「Day1」と送るだけ。その日の問題がすぐ届きます。</p>
+        <div class="bird-say"><img class="bird" src="img/mascot/talk.webp" alt="" width="203" height="320" loading="lazy"><p class="phone-cap">公式LINEに「Day1」と送るだけ。その日の問題がすぐ届きます。</p></div>
       </div>
 
     </div>
@@ -706,15 +720,18 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   // 例文：前から1かたまりずつ読む
   const R=[1,2,3].map(i=>document.getElementById('r'+i)), done=document.getElementById('done');
   let timers=[];
-  const all=()=>{R.forEach(r=>r.classList.add('on','ja-on','t-on'));done.classList.add('on');};
-  function reset(){timers.forEach(clearTimeout);timers=[];R.forEach(r=>r.className='row');done.classList.remove('on');}
+  const all=()=>{R.forEach(r=>r.classList.add('on','ja-on','t-on'));done.classList.add('on');face('happy');};
+  const bird=document.getElementById('bird'), face=f=>{if(bird)bird.src='img/mascot/'+f+'.webp'};
+  ['idea','happy'].forEach(f=>{const i=new Image();i.src='img/mascot/'+f+'.webp'});
+  function reset(){timers.forEach(clearTimeout);timers=[];R.forEach(r=>r.className='row');done.classList.remove('on');face('think');}
   function play(){reset();
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){all();return;}
     const at=(ms,f)=>timers.push(setTimeout(f,ms));
     at(300,()=>R[0].classList.add('on'));at(900,()=>R[0].classList.add('ja-on'));at(1600,()=>R[0].classList.add('t-on'));
     at(2900,()=>R[1].classList.add('on'));at(3500,()=>R[1].classList.add('ja-on'));at(4200,()=>R[1].classList.add('t-on'));
     at(5400,()=>R[2].classList.add('on'));at(6000,()=>R[2].classList.add('ja-on'));
-    at(7000,()=>done.classList.add('on'));
+    at(4200,()=>face('idea'));
+    at(7000,()=>{done.classList.add('on');face('happy');});
   }
   document.getElementById('replay').addEventListener('click',play);
   const card=document.querySelector('.scanner');
