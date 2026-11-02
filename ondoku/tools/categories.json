@@ -1,0 +1,15 @@
+{
+ "C01": {"name": "長い主語", "desc": "主語のあとに関係詞・分詞・前置詞句がついて、主語が長くなる文", "ex": "Files that contain client payment details / are strictly confidential."},
+ "C02": {"name": "後ろに説明が続く", "desc": "文の後半に関係詞・分詞・to不定詞・by〜ing などで説明が足される文", "ex": "... a new branch in Nairobi, / which will serve clients across East Africa."},
+ "C03": {"name": "理由・条件・時の節が先", "desc": "Because / If / When / Since / Before などの節が文の頭にくる文", "ex": "Because the conference hotel was fully booked, / the organizers ..."},
+ "C04": {"name": "前置きの言葉が先", "desc": "Despite / According to / However / In addition / As a result / Beginning May 1 などの前置きから始まる文", "ex": "Despite rising construction costs, / the board ..."},
+ "C05": {"name": "2つの文をつなぐ", "desc": "and / so / but / whereas / セミコロンで、2つの文をつないだ文", "ex": "Each session has spaces for only twenty people, / so please sign up early."},
+ "C06": {"name": "受け身が中心", "desc": "be＋過去分詞（〜される）が文の中心になる文", "ex": "The elevators / are inspected every six months / by a certified technician."},
+ "C07": {"name": "比べる", "desc": "more 〜 than / rather 〜 than / compared with などで比べる文", "ex": "The new standing desks / are far more comfortable / than those ..."},
+ "C08": {"name": "質問・依頼", "desc": "Would / Could / Please で始まる、たずねる・頼む文（質問は文末を上げる）", "ex": "Could you move me / to the first flight back to Linmouth?"},
+ "C09": {"name": "並べる", "desc": "A, B, and C のように、同じ形のかたまりを並べる文", "ex": "Coordinators plan itineraries, / book hotels and transportation, / and accompany groups ..."},
+ "C10": {"name": "倒置・強調", "desc": "Hardly had / Only / Not until などで語順が変わる、または強調する文", "ex": "Hardly had the store opened / when it began receiving more orders ..."},
+ "C11": {"name": "情報が前から積み重なる", "desc": "主語＋動詞のあとに「何を・どこで・いつ・どうやって」が順に足されていく基本の文", "ex": "Staff at the center will address / phone and online questions / from customers across the region."},
+ "C12": {"name": "that節・whether節", "desc": "say that / announce that / note that / whether など、「〜ということ」「〜かどうか」が入る文", "ex": "We are pleased to announce / that Ardent Paper has acquired Lowell Packaging."},
+ "C13": {"name": "名詞のかたまりが主語", "desc": "The installation of 〜 / Promptly answering 〜 など、動作を表す名詞や〜ingが主語になる文", "ex": "Promptly answering customer e-mails / has helped Calder Outfitters ..."}
+}
