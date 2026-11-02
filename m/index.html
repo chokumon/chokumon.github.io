@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>直問！ 会員ページ</title>
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Sora:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#000;--bg2:#0D0D0D;--panel:#121212;--edge:#2B2B2B;--ink:#F5F5F5;--mute:#A6A6A6;--q:#FF6A1A;--paper:#FAF3E2;
+--jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;--en:"Sora","Zen Kaku Gothic New",sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:130px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--jp);font-size:15px;line-height:1.75;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:48px}
+.wrap{max-width:640px;margin:0 auto}
+a{color:inherit}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:16px 12px}
+.brand{font-weight:900;font-size:24px;line-height:1;letter-spacing:.06em;text-decoration:none}
+.brand i{font-style:normal;color:var(--q);margin-left:-.12em}
+.brand em{font-style:normal;font-family:var(--en);font-size:10px;letter-spacing:.3em;color:var(--mute);margin-left:10px;font-weight:600}
+.toplan{font-size:13px;font-weight:700;color:#000;background:var(--q);border-radius:999px;padding:7px 14px;text-decoration:none}
+nav{position:sticky;top:0;z-index:5;background:rgba(0,0,0,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-block:10px;border-bottom:1px solid var(--edge)}
+.days{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px}
+@media (max-width:480px){.days{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.days a{display:block;text-align:center;text-decoration:none;color:var(--mute);background:var(--panel);border:1px solid var(--edge);
+border-radius:10px;padding:6px 0;font-family:var(--en);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.days a[aria-current="true"]{background:var(--q);border-color:var(--q);color:#000}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--q);outline-offset:2px}
+.head{padding-block:24px 6px}
+.head h1{font-family:var(--en);font-weight:700;font-size:34px;line-height:1.1;margin:0}
+.head .sub{margin:8px 0 0;font-size:16px;font-weight:700}
+.head .lvl{margin:6px 0 0;color:var(--mute);font-size:13px}
+.head .lvl b{color:var(--q);font-family:var(--en)}
+.how{background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:12px 16px;font-size:13.5px;margin:16px 0;color:var(--mute)}
+.how b{color:var(--ink)}
+.how ol{margin:4px 0 0;padding-left:1.3em}
+.inst{color:var(--mute);font-size:14px;margin:0 0 14px}
+.inst b{color:var(--ink)}
+/* 文書（Part 6・7） */
+.set{margin:26px 0 0}
+.intro{font-family:var(--en);font-size:13px;color:var(--mute);margin:0 0 8px}
+.passage{background:var(--paper);color:#1A1A1A;border-radius:12px;padding:16px 16px 6px;font-family:var(--en);font-size:14.5px;line-height:1.7}
+.passage p{margin:0 0 10px}
+.doc+.doc{margin-top:16px;padding-top:14px;border-top:1px dashed #B8B0A1}
+.doc .dt{font-family:var(--jp);font-weight:700;font-size:12px;color:#5F5545;margin-bottom:6px}
+.passage .bl{border-bottom-color:#B84300;color:#B84300}
+/* 問題 */
+.q{background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:16px 16px 14px;margin:12px 0 0}
+.qh{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--q);color:#000;font-family:var(--en);font-weight:700;font-size:15px}
+.qt{margin:2px 0 0;font-family:var(--en);font-size:16px;line-height:1.65;color:#fff}
+.qt.qn{font-family:var(--jp);font-size:15px}
+.bl{display:inline-block;min-width:3.6em;border-bottom:2px solid var(--q);color:var(--q);text-align:center;font-family:var(--en);font-weight:700;font-size:.85em;line-height:1.2;margin:0 2px}
+.opts{list-style:none;margin:12px 0 0 42px;padding:0;display:grid;gap:4px}
+.opts li{display:flex;gap:8px;font-family:var(--en);font-size:15px;line-height:1.5;padding:5px 8px;border-radius:8px;border:1px solid transparent}
+.opts .let{color:var(--q);font-weight:700;flex:none}
+details{margin:12px 0 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:8px;border:1.5px solid var(--q);color:var(--q);border-radius:12px;padding:10px;font-weight:700;font-size:15px;-webkit-tap-highlight-color:transparent}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+details[open] summary{background:transparent;color:var(--mute);border-color:var(--edge)}
+details[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+summary .c,details[open] summary .o{display:none}
+details[open] summary .c{display:inline}
+.q:has(details[open]) .opts li.ok{border-color:var(--q);background:rgba(255,106,26,.12)}
+/* 解説 */
+.exp{margin-top:14px;font-size:14.5px}
+.ans{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:0 0 12px;border-bottom:1px solid var(--edge)}
+.ans .al{font-size:12px;font-weight:700;color:#000;background:var(--q);border-radius:6px;padding:1px 8px}
+.ans b{font-family:var(--en);font-size:18px;color:var(--q)}
+.ans .lv{margin-left:auto;color:var(--mute);font-size:12px}
+h4{margin:18px 0 8px;font-size:14.5px;display:flex;align-items:center;gap:8px}
+h4 span{font-family:var(--en);font-size:11px;font-weight:700;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:0 8px}
+.reads{border-left:3px solid var(--q);border-radius:2px}
+.rd{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:7px 10px;border-bottom:1px solid var(--edge)}
+.rd:last-child{border-bottom:0}
+.rd .e{font-family:var(--en);color:#fff;font-size:14px;line-height:1.5}
+.rd .j{color:#D6D6D6;font-size:13.5px;line-height:1.55}
+.rd .j em{display:block;font-style:normal;color:var(--q);font-weight:700;font-size:12.5px;margin-top:2px}
+.rd.key{background:rgba(255,106,26,.10)}
+@media (max-width:480px){.rd{grid-template-columns:1fr}}
+.toi{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.toi .tl{color:var(--q)}
+.decide{margin:10px 0 0;background:rgba(255,106,26,.10);border-radius:10px;padding:9px 12px}
+.decide::before{content:"▶ ";color:var(--q)}
+.decide b,.toi b:not(.tl){color:var(--q)}
+.wx{margin:16px 0 0;color:var(--mute);font-size:13.5px}
+.wx p{margin:0}
+.wxh{font-weight:700;color:var(--ink);margin-bottom:6px!important}
+.wxi{padding:8px 0;border-top:1px dashed var(--edge)}
+.wxi b{color:var(--ink)}
+.ex{margin-top:4px!important;font-family:var(--en);color:#fff;font-size:13.5px;padding-left:12px;border-left:2px solid #3E8E5E}
+.ex .exl{display:block;font-family:var(--jp);font-size:11.5px;color:#5DBB83}
+.ex b{color:var(--q)}
+.exn{padding-left:14px;font-size:12.5px}
+.choku{margin:0;line-height:1.8}
+.ja{margin:6px 0 0;color:var(--mute);font-size:13.5px}
+.nextday{display:flex;gap:10px;margin-top:24px}
+.nextday a{flex:1;text-align:center;text-decoration:none;background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:12px;font-weight:700;font-family:var(--en)}
+.cta{margin-top:24px;border-radius:16px;padding:18px;background:var(--panel);border:1px solid var(--q)}
+.cta b{display:block;font-size:16px}
+.cta p{margin:4px 0 12px;color:var(--mute);font-size:13.5px}
+.cta a{display:block;text-align:center;background:var(--q);color:#000;text-decoration:none;font-weight:700;border-radius:12px;padding:12px}
+footer{margin-top:26px;font-size:11.5px;color:var(--mute);line-height:1.6}
+@media (prefers-reduced-motion:reduce){summary::after{transition:none}}
+
+.msg{background:var(--panel);border:1px solid var(--edge);border-radius:14px;padding:18px;margin:24px 0;color:var(--mute)}
+.msg b{color:var(--ink)}
+.member{font-size:12px;font-weight:700;color:#000;background:var(--q);border-radius:999px;padding:4px 12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="../">直問<i>！</i><em>CHOKUMON</em></a><span class="member">会員ページ</span></header>
+<main>
+  <div class="head" id="head" hidden><h1 id="t"></h1><p class="sub" id="s"></p><p class="lvl" id="l"></p></div>
+  <div class="how" id="how" hidden><b>使い方</b><ol><li>下の説明にある時間を目安に10問を解く（答えはメモ）</li><li>問題の下の「答えと解説を見る」で答え合わせ。空欄でどんな「問い」を立てるかを読む</li><li>まちがえた問題は、英文を前から声に出して読む。公式LINEの「音読」でチェックもできます</li></ol></div>
+  <div id="app"><p class="msg">読み込んでいます…</p></div>
+</main>
+<footer>このページは会員専用です。リンクをほかの人に渡さないでください。TOEICはETSの登録商標です。このページの問題はすべてオリジナルで、ETSの承認を受けたものではありません。レベルの目安は推定です。</footer>
+</div>
+<script>
+(async function(){
+  const app=document.getElementById('app');
+  const msg=h=>{app.innerHTML='<p class="msg">'+h+'</p>';};
+  const m=location.hash.match(/^#d(\d{1,4})\.([A-Za-z0-9_-]{22})$/);
+  if(!m){msg('<b>Skool の会員ページにあるリンクから開いてください。</b><br>リンクの最後まで（# のあとも）そろっていないと開けません。');return;}
+  const b=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');s+='='.repeat((4-s.length%4)%4);return Uint8Array.from(atob(s),c=>c.charCodeAt(0));};
+  let r;
+  try{r=await fetch('d'+m[1]+'.json',{cache:'no-cache'});}catch(e){msg('通信できませんでした。電波のよいところで開き直してください。');return;}
+  if(r.status===404){msg('<b>Day '+m[1]+' はまだ準備中です。</b><br>公開の日になったら、もう一度開いてください。');return;}
+  try{
+    const j=await r.json();
+    const key=await crypto.subtle.importKey('raw',b(m[2]),'AES-GCM',false,['decrypt']);
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b(j.iv)},key,b(j.ct));
+    app.innerHTML=new TextDecoder().decode(pt);
+  }catch(e){msg('<b>ページを開けませんでした。</b><br>リンクが途中で切れていないか確かめて、Skool からもう一度開いてください。');return;}
+  const el=app.querySelector('.day');
+  document.getElementById('t').textContent='Day '+m[1];
+  document.getElementById('s').textContent=el.dataset.sub;
+  document.getElementById('l').innerHTML='レベルの目安 <b>'+el.dataset.lv+'</b> 点';
+  document.getElementById('head').hidden=false;document.getElementById('how').hidden=false;
+  document.title='直問！ Day '+m[1];
+})();
+</script>
+</body>
+</html>
