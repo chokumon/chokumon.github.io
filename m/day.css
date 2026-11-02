@@ -38,6 +38,7 @@ details[open] summary .c{display:inline}
 .ans{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:0 0 12px;border-bottom:1px solid var(--edge)}
 .ans .al{font-size:12px;font-weight:700;color:#000;background:var(--q);border-radius:6px;padding:1px 8px}
 .ans b{font-family:var(--en);font-size:18px;color:var(--q)}
+.syn{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:var(--q)}
 .ans .lv{margin-left:auto;padding-left:10px;color:var(--mute);font-size:12px}
 h4{margin:18px 0 8px;font-size:14.5px;display:flex;align-items:center;gap:8px}
 h4 span{font-family:var(--en);font-size:11px;font-weight:700;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:0 8px}
