@@ -46,11 +46,11 @@ def work(job):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-ac", "1", "-ar", "16000", wav], check=True, timeout=60)
         dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav], capture_output=True, text=True).stdout or 0)
         if dur > 30:
-            return "長すぎるので、1文だけ（30秒以内）で送ってね。", {"dur": dur}
+            return "長すぎるので、1文だけ（30秒以内）で送ってね。（今回は回数に数えません）", {"dur": dur, "retry": True}
         from azure_pa import assess
         az = assess(wav, x["say"])
         if not az["ok"]:
-            return "うまく聞き取れませんでした。静かな場所で、スマホを口から20cmくらいにして、もう一度送ってね。", {"azure": az.get("reason")}
+            return "うまく聞き取れませんでした。静かな場所で、スマホを口から20cmくらいにして、もう一度送ってね。（今回は回数に数えません）", {"azure": az.get("reason"), "retry": True}
         R = measure(wav, x, az["words"])
         text = advise(x, R, az)
         return text, {"R": R, "scores": az["scores"], "dur": dur}
@@ -73,9 +73,9 @@ def main():
             for job in jobs:
                 t0 = time.time()
                 try:
-                    text, info = work(job); how = send(job, text); status = "done"
+                    text, info = work(job); how = send(job, text); status = "retry" if info.get("retry") else "done"
                 except Exception as e:  # noqa: BLE001
-                    info = {"error": repr(e), "tb": traceback.format_exc()[-800:]}; how = send(job, "チェック中にエラーが起きました。少ししてからもう一度送ってね。"); status = "error"
+                    info = {"error": repr(e), "tb": traceback.format_exc()[-800:]}; how = send(job, "チェック中にエラーが起きました。少ししてからもう一度送ってね。（今回は回数に数えません）"); status = "error"
                 requests.post(W + "/agent/done", headers=H, json={"id": job["id"], "status": status, "note": how}, timeout=15)
                 log({"t": datetime.now().isoformat(timespec="seconds"), "user": job["user_id"][-6:], "sid": job["sid"], "how": how,
                      "sec": round(time.time() - t0, 1), **info})
