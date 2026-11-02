@@ -32,6 +32,24 @@ def align(ref_words, words):
             m[i] = got[k]; j = k + 1
     return m
 
+def silences(path, min_len=0.25, drop=28):
+    """声の大きさから、無音の区間（秒）を拾う。Azure が無音を単語の長さに含めてしまう場合への備え"""
+    s = parselmouth.Sound(path)
+    I = s.to_intensity(time_step=0.01)
+    v, t = I.values[0], I.xs()
+    sil = v < v.max() - drop
+    on = np.where(~sil)[0]
+    if not len(on): return []
+    out, i = [], on[0]
+    while i <= on[-1]:
+        if sil[i]:
+            j = i
+            while j <= on[-1] and sil[j]: j += 1
+            if t[j - 1] - t[i] >= min_len: out.append((float(t[i]), float(t[j - 1])))
+            i = j
+        else: i += 1
+    return out
+
 def pitch_track(path):
     s = parselmouth.Sound(path)
     p = s.to_pitch(time_step=0.01, pitch_floor=75, pitch_ceiling=500)
@@ -70,6 +88,22 @@ def measure(path, x, words):
                     R["mid_pauses"].append({"after": ref_words[i].strip(",.;"), "before": ref_words[i + 1].strip(",.;"), "sec": round(gap, 2), "chunk": ci})
         if ci < len(bounds) - 1 and m[b] and m[b + 1]:
             R["bound_pauses"].append(round(m[b + 1]["start"] - m[b]["end"], 2))
+    # 無音の区間からも止まった場所を拾う（単語の時間に無音が含まれていても見逃さない）
+    inner = {(a + k, a + k + 1): ci for ci, (a, b) in enumerate(bounds) for k in range(b - a)}
+    edges = {b: ci for ci, (a, b) in enumerate(bounds) if ci < len(bounds) - 1}
+    seen = {(q["after"], q["before"]) for q in R["mid_pauses"]}
+    for s0, s1 in silences(path):
+        mid = (s0 + s1) / 2
+        prev = [i for i, w in enumerate(m) if w and w["start"] < mid]
+        if not prev: continue
+        i = prev[-1]
+        if i + 1 >= len(m) or not any(m[i + 1:]): continue
+        if (i, i + 1) in inner:
+            key = (ref_words[i].strip(",.;"), ref_words[i + 1].strip(",.;"))
+            if key not in seen:
+                R["mid_pauses"].append({"after": key[0], "before": key[1], "sec": round(s1 - s0, 2), "chunk": inner[(i, i + 1)], "by": "silence"}); seen.add(key)
+        elif i in edges and edges[i] < len(R["bound_pauses"]):
+            R["bound_pauses"][edges[i]] = max(R["bound_pauses"][edges[i]], round(s1 - s0, 2))
     # 強く読む語（かたまりの中で高さ・強さが目立っているか）
     t, f, ti, iv = pitch_track(path)
     for ci, (a, b) in enumerate(bounds):
