@@ -44,7 +44,7 @@ def work(job):
         r = requests.get(f"https://api-data.line.me/v2/bot/message/{job['message_id']}/content", headers={"Authorization": "Bearer " + LT}, timeout=30)
         r.raise_for_status(); open(src, "wb").write(r.content)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-ac", "1", "-ar", "16000", wav], check=True, timeout=60)
-        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav], capture_output=True, text=True).stdout or 0)
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav], capture_output=True, text=True, timeout=30).stdout or 0)
         if dur > 30:
             return "長すぎるので、1文だけ（30秒以内）で送ってね。（今回は回数に数えません）", {"dur": dur, "retry": True}
         from azure_pa import assess
@@ -62,23 +62,52 @@ def cleanup():
         if f.endswith(".jsonl") and time.time() - os.path.getmtime(q) > KEEP_DAYS * 86400:
             os.remove(q)
 
+def heartbeat(state):
+    if time.time() - state["hb"] > 60:
+        try:
+            requests.post(W + "/agent/heartbeat", headers=H, timeout=15); state["hb"] = time.time()
+        except Exception as e:  # noqa: BLE001
+            print(datetime.now(), "heartbeat error", repr(e), flush=True)
+
+def finish(job, status, how, text=None):
+    """結果を Worker に知らせる。失敗しても次の仕事へ進む（10分たてば Worker がもう一度出す）"""
+    body = {"id": job["id"], "status": status, "note": how}
+    if text and status == "done": body["text"] = text
+    for _ in range(3):
+        try:
+            requests.post(W + "/agent/done", headers=H, json=body, timeout=15); return
+        except Exception as e:  # noqa: BLE001
+            print(datetime.now(), "done error", repr(e), flush=True); time.sleep(3)
+
+def run(job):
+    t0 = time.time(); text = None
+    try:
+        text, info = work(job)
+        status = "retry" if info.get("retry") else "done"
+    except Exception as e:  # noqa: BLE001
+        info = {"error": repr(e), "tb": traceback.format_exc()[-800:]}; status = "error"
+        text = "チェック中にエラーが起きました。少ししてからもう一度送ってね。（今回は回数に数えません）"
+    try:
+        how = send(job, text)
+    except Exception as e:  # noqa: BLE001
+        how = f"send-error:{e!r}"[:120]
+    if not how.startswith("reply") and how != "push:200":
+        status = "error"   # 届けられなかった → その回は数えない
+    finish(job, status, how, text)
+    log({"t": datetime.now().isoformat(timespec="seconds"), "user": job["user_id"][-6:], "sid": job["sid"], "how": how, "status": status,
+         "sec": round(time.time() - t0, 1), **info})
+
 def main():
-    last_hb = 0
-    cleanup()
+    state = {"hb": 0}; last_clean = 0
     while True:
         try:
-            if time.time() - last_hb > 60:
-                requests.post(W + "/agent/heartbeat", headers=H, timeout=15); last_hb = time.time()
+            if time.time() - last_clean > 86400:
+                cleanup(); last_clean = time.time()
+            heartbeat(state)
             jobs = requests.get(W + "/agent/jobs", headers=H, timeout=15).json()
             for job in jobs:
-                t0 = time.time()
-                try:
-                    text, info = work(job); how = send(job, text); status = "retry" if info.get("retry") else "done"
-                except Exception as e:  # noqa: BLE001
-                    info = {"error": repr(e), "tb": traceback.format_exc()[-800:]}; how = send(job, "チェック中にエラーが起きました。少ししてからもう一度送ってね。（今回は回数に数えません）"); status = "error"
-                requests.post(W + "/agent/done", headers=H, json={"id": job["id"], "status": status, "note": how}, timeout=15)
-                log({"t": datetime.now().isoformat(timespec="seconds"), "user": job["user_id"][-6:], "sid": job["sid"], "how": how,
-                     "sec": round(time.time() - t0, 1), **info})
+                heartbeat(state)   # 仕事が続いても「動いている」と知らせる
+                run(job)
         except Exception as e:  # noqa: BLE001  ネットが一時的に切れても止まらない
             print(datetime.now(), "loop error", repr(e), flush=True); time.sleep(10)
         time.sleep(2)

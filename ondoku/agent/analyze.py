@@ -77,7 +77,7 @@ def measure(path, x, words):
     bounds = chunk_of_words(x)
     R = {"omitted": [ref_words[i].strip(",.;?!") for i, w in enumerate(m) if w is None],
          "inserted": [w["word"] for w in words if w.get("err") == "Insertion"],
-         "mispronounced": [w["word"] for w in words if w.get("err") == "Mispronunciation" or (w.get("acc") is not None and w["acc"] < 60)],
+         "mispronounced": [w["word"] for w in words if w.get("err") not in ("Omission", "Insertion") and (w.get("err") == "Mispronunciation" or (w.get("acc") is not None and w["acc"] < 60))],
          "mid_pauses": [], "bound_pauses": [], "nucleus": [], "final": None}
     # 止まった場所
     for ci, (a, b) in enumerate(bounds):
