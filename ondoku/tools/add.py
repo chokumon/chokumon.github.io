@@ -41,12 +41,13 @@ def check(x, others):
     return E
 
 def main(path):
-    new = json.load(open(path)); today = datetime.datetime.utcnow() + datetime.timedelta(hours=9)
+    new = json.load(open(path)); today = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)
     stamp = today.strftime("%y%m%d"); done = []; errs = []
-    for k, raw in enumerate(new, 1):
+    base = sum(1 for o in S if o["id"].startswith("g" + stamp))   # 同じ日に2回動いても番号がぶつからない
+    for k, raw in enumerate(new, base + 1):
         ch = [c.split("|")[0].strip() for c in raw["chunks"]]; ja = [c.split("|")[1].strip() if "|" in c else "" for c in raw["chunks"]]
         text = " ".join(ch); q = text.endswith("?"); wh = re.match(r"(What|When|Where|Why|How|Who|Which)\b", text)
-        x = {"id": f"g{stamp}{k}", "cat": raw["cat"], "chunks": ch, "ja": ja, "text": text,
+        x = {"id": f"g{stamp}{k:02d}", "cat": raw["cat"], "chunks": ch, "ja": ja, "text": text,
              "nucleus": [L.last_content(c) for c in ch], "final": "↗" if q and not wh else "↘",
              "say": text.replace("e-mail", "email"), "say_chunks": [c.replace("e-mail", "email") for c in ch]}
         E = check(x, S + done)
