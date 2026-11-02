@@ -38,7 +38,7 @@ details[open] summary .c{display:inline}
 .ans{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:0 0 12px;border-bottom:1px solid var(--edge)}
 .ans .al{font-size:12px;font-weight:700;color:#000;background:var(--q);border-radius:6px;padding:1px 8px}
 .ans b{font-family:var(--en);font-size:18px;color:var(--q)}
-.ans .lv{margin-left:auto;color:var(--mute);font-size:12px}
+.ans .lv{margin-left:auto;padding-left:10px;color:var(--mute);font-size:12px}
 h4{margin:18px 0 8px;font-size:14.5px;display:flex;align-items:center;gap:8px}
 h4 span{font-family:var(--en);font-size:11px;font-weight:700;color:var(--q);border:1px solid var(--q);border-radius:999px;padding:0 8px}
 .reads{border-left:3px solid var(--q);border-radius:2px}
@@ -65,5 +65,14 @@ h4 span{font-family:var(--en);font-size:11px;font-weight:700;color:var(--q);bord
 .exn{padding-left:14px;font-size:12.5px}
 .choku{margin:0;line-height:1.8}
 .ja{margin:6px 0 0;color:var(--mute);font-size:13.5px}
+.choku{margin-top:10px!important}
+.tags{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-size:12px;line-height:1.4;padding:3px 9px;border-radius:999px;border:1px solid var(--edge);color:var(--mute)}
+.core{margin:0;line-height:1.8;background:var(--panel);border-left:3px solid var(--q);border-radius:0 10px 10px 0;padding:9px 12px}
+.core b{color:var(--q)}
+.reuse{margin:0;display:grid;gap:4px;border:1px dashed var(--edge);border-radius:10px;padding:10px 12px}
+.reuse [lang=en]{font-family:var(--en);color:#fff}
+.reuse b{color:var(--q)}
+.rj{color:var(--mute);font-size:13.5px}
 @media (prefers-reduced-motion:reduce){summary::after{transition:none}}
 
