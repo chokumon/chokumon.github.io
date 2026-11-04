@@ -24,7 +24,7 @@
     ".mnb[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}" +
     ".mnbg{position:fixed;inset:0;z-index:98;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .2s}" +
     ".mnp{position:fixed;top:0;left:0;bottom:0;z-index:99;width:min(82vw,320px);background:#0E0E0E;border-right:1px solid rgba(255,106,26,.45);" +
-    "transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;padding:18px 0 28px;font-family:'Noto Sans JP',system-ui,sans-serif}" +
+    "transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;padding:18px 0 28px;font-family:inherit}" +
     ".mn-open .mnbg{opacity:1;pointer-events:auto}.mn-open .mnp{transform:none}" +
     ".mnp .mnh{display:flex;align-items:center;justify-content:space-between;padding:0 14px 14px 20px;border-bottom:1px solid #262626}" +
     ".mnp .mnh b{font-size:20px;color:#F5F5F5}.mnp .mnh b i{font-style:normal;color:#FF6A1A}" +
