@@ -93,6 +93,7 @@
   fin.hidden = true;
   root.appendChild(fin);
 
+  var sendNo = 0, serverDoneSeen = false;
   function letter(k) { return "(" + "ABCD".charAt(k) + ")"; }
   function update(serverDone) {
     var n = 0, r = 0;
@@ -134,10 +135,17 @@
   }
   function send(q, k) {
     if (MODE === "local") { saved[q.id] = k; store.set("ans:d" + DAY, saved); update(); return; }
+    var my = ++sendNo;
     update(false);
+    var fail = function (why) { prog.innerHTML = "<b>記録できませんでした。" + why + "</b>"; if (!fin.hidden) fin.innerHTML = "<b>記録できませんでした</b><p>" + why + "</p>"; };
     fetch("/day/" + DAY + "/answer", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q: q.id, k: k }), credentials: "same-origin" })
-      .then(function (r) { return r.json(); }).then(function (j) { update(!!j.done); })
-      .catch(function () { prog.innerHTML = "<b>記録できませんでした。通信を確かめて、ページを開き直してください。</b>"; });
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) return fail(x.j.error === "member" ? "会員の期間が終わっています。アカウントの画面を確かめてください。" : x.j.error === "locked" ? "この Day はまだ開いていないか、前の Day が終わっていません。" : "ページを開き直してから、もう一度答えてください。");
+        if (x.j.done) serverDoneSeen = true;
+        if (my === sendNo || serverDoneSeen) update(serverDoneSeen || (x.j.answered >= x.j.total));
+      })
+      .catch(function () { fail("通信を確かめて、ページを開き直してください。"); });
   }
   qs.forEach(function (q) {
     var lis = q.querySelectorAll(".opts li");

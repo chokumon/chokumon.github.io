@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /ondoku/
-Disallow: /m/
+Disallow: /m/test/
 
 Sitemap: https://chokumon.com/sitemap.xml

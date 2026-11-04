@@ -59,7 +59,7 @@ img{max-width:100%}
 /* header */
 .top{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.72);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,106,26,.35)}
 .top .in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
-.logo{font-weight:900;font-size:24px;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center}
+.logo{font-weight:900;font-size:24px;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;white-space:nowrap;flex-shrink:0}
 .logo i{font-style:normal;color:var(--q);margin-left:-.12em}
 .logo em{font-style:normal;font-family:var(--en);font-weight:600;font-size:10px;letter-spacing:.32em;color:var(--mute);border-left:1px solid var(--edge);padding-left:10px;margin-left:6px;line-height:1.2}
 .top nav{display:flex;gap:22px;align-items:center;font-size:14px}
@@ -415,7 +415,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
       <a class="hide-sm" href="#how">解き方</a>
       <a class="hide-sm" href="#line">LINEでできること</a>
       <a class="hide-sm" href="#plan">月額プラン</a>
-      <a class="hide-sm" href="days/1/">無料の10問</a>
+      <a class="hide-sm" href="days/1/">無料の問題</a>
       <a class="hide-sm" href="grammar/">文法</a>
       <a class="hide-sm" href="articles/">読み物</a>
       <a class="chip-line" href="https://line.me/R/ti/p/@808umztb">LINE</a>
@@ -432,7 +432,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
       <p class="lead">英語を返り読みせず、前から順に理解するトレーニングです。読むのが速くなり、リスニングにもつながります。TOEIC の文法問題は、空欄で「問い」を立てて、文法用語なしで解きます。</p>
       <div class="cta-row">
         <a class="btn btn-main" href="#plan">月額プランを見る</a>
-        <a class="btn btn-ghost" href="days/1/">無料の10問を解く</a>
+        <a class="btn btn-ghost" href="days/1/">無料の問題を解く</a>
       </div>
     </div>
 
@@ -732,7 +732,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
   <section class="alt" id="plan">
     <div class="in">
       <h2>毎日続けるなら、月額プラン。</h2>
-      <p class="sub">無料の10問で解き方をつかんだら、月額プランで毎日の練習を続けます。</p>
+      <p class="sub">無料の Day 1〜10 で解き方をつかんだら、月額プランで毎日の練習を続けます。</p>
       <div class="plan-grid">
         <div class="plan pro">
           <span class="tag">おすすめ</span>
@@ -740,7 +740,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
           <p class="price"><span class="jp">月額</span>4,500<small>円（税込）</small></p>
           <p class="price-note"><b style="color:var(--q)">初めての方は7日間無料。</b>そのあと毎月の自動更新・いつでも解約できます</p>
           <ul>
-            <li>Day 11 からの問題（1日10問・答えと解説つき）<br><small>Day は毎日20時に1つずつ開きます</small></li>
+            <li>Day 11 からの問題（1日10問・答えと解説つき）<br><small>Day は全員共通の日程で、毎日20時に1つずつ開きます（Day 11 は 11月13日 20:00）。会員サイトでも Day 1 から解きます（無料ページの記録は引きつがれません）</small></li>
             <li>レベルテスト（30問・リスニングつき）と全問の解説</li>
             <li>試験日に合わせた毎日の ToDo と、時間ごとのカレンダー</li>
             <li>ToDo・予定の前にスマホへ通知</li>
@@ -785,7 +785,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 <footer>
   <div class="in">
     <div class="links">
-      <a href="days/1/">無料の10問</a>
+      <a href="days/1/">無料の問題（Day 1〜10）</a>
       <a href="grammar/">文法</a>
       <a href="articles/">読み物</a>
       <a href="#plan">月額プラン</a>
