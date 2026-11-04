@@ -11,6 +11,12 @@
     ["月額プラン", "/#plan"]
   ];
   var LINE = "https://line.me/R/ti/p/@808umztb";
+  // アクセス数（管理サイト用。Cookie なし・個人は特定しない）
+  try {
+    if (location.hostname === "chokumon.com" && navigator.sendBeacon) {
+      navigator.sendBeacon("https://my.chokumon.com/hit", new Blob([JSON.stringify({ p: location.pathname, r: document.referrer })], { type: "text/plain" }));
+    }
+  } catch (e) {}
   var head = document.querySelector("header");
   if (!head) return;
 
