@@ -69,6 +69,16 @@ h4 span{font-family:var(--en);font-size:11px;font-weight:700;color:var(--q);bord
 .choku{margin:0;line-height:1.8}
 .ja{margin:6px 0 0;color:var(--mute);font-size:13.5px}
 .choku{margin-top:10px!important}
+.simq{margin:22px 0 4px;padding-top:16px;border-top:1px solid var(--edge);display:grid;gap:6px}
+.simbtn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:var(--q);color:#000;font-weight:700;font-size:16px;text-decoration:none}
+.simbtn::before{content:"";width:18px;height:18px;margin-right:8px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23000%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M17 2l4 4-4 4%27/%3E%3Cpath d=%27M3 11v-1a4 4 0 0 1 4-4h14%27/%3E%3Cpath d=%27M7 22l-4-4 4-4%27/%3E%3Cpath d=%27M21 13v1a4 4 0 0 1-4 4H3%27/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23000%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M17 2l4 4-4 4%27/%3E%3Cpath d=%27M3 11v-1a4 4 0 0 1 4-4h14%27/%3E%3Cpath d=%27M7 22l-4-4 4-4%27/%3E%3Cpath d=%27M21 13v1a4 4 0 0 1-4 4H3%27/%3E%3C/svg%3E") center/contain no-repeat}
+.simbtn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.simn{font-size:12px;color:var(--mute);text-align:center}
+.sim{margin:0 0 30px;scroll-margin-top:80px}.simh{margin:0 0 8px;font-size:13px;font-weight:700;color:var(--q)}
+.sim:target .simh::after{content:"  ← この問題から";color:var(--mute);font-weight:500}
+.sims .q:not(.answered) details{display:none}.sims .q .opts li{cursor:pointer}.sims .q.answered .opts li{cursor:default}
+.sims .q.answered .opts li.ok{border-color:#3DD68C;background:rgba(61,214,140,.13)}.sims .q.answered .opts li.mine:not(.ok){border-color:#FF6464;background:rgba(255,100,100,.12)}
+.sims .q summary{display:none}.sims .q details{margin-top:4px}.sims .res{font-weight:700;margin:8px 0 0}.sims .res.y{color:#3DD68C}.sims .res.n{color:#FF8A8A}
 .cq{-webkit-box-decoration-break:clone;box-decoration-break:clone;color:var(--q);font-size:.9em;border:1px solid var(--q);border-radius:6px;padding:0 5px;margin:0 3px 0 1px;white-space:normal}
 .sv{-webkit-box-decoration-break:clone;box-decoration-break:clone;color:#5DBB83;font-size:.9em;border:1px solid #3E8E5E;border-radius:6px;padding:0 5px;margin:0 2px 0 3px}
 .sv::before{content:"✔ "}
