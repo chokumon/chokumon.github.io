@@ -431,8 +431,8 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
       <h1><span class="ln">英語を前から読んで、</span><span class="ln ln2">問いで解く。</span></h1>
       <p class="lead">英語を返り読みせず、前から順に理解するトレーニングです。読むのが速くなり、リスニングにもつながります。TOEIC の文法問題は、空欄で「問い」を立てて、文法用語なしで解きます。</p>
       <div class="cta-row">
-        <a class="btn btn-main" href="#plan">月額プランを見る</a>
-        <a class="btn btn-ghost" href="days/1/">無料の問題を解く</a>
+        <a class="btn btn-main" href="days/1/">無料で Day 1 を解く</a>
+        <a class="btn btn-ghost" href="#plan">月額プランを見る</a>
       </div>
     </div>
 
@@ -740,7 +740,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
           <p class="price"><span class="jp">月額</span>4,500<small>円（税込）</small></p>
           <p class="price-note"><b style="color:var(--q)">初めての方は7日間無料。</b>そのあと毎月の自動更新・いつでも解約できます</p>
           <ul>
-            <li>Day 11 からの問題（1日10問・答えと解説つき）<br><small>Day は全員共通の日程で、毎日20時に1つずつ開きます（Day 11 は 11月13日 20:00）。会員サイトでも Day 1 から解きます（無料ページの記録は引きつがれません）</small></li>
+            <li>Day 11 からの問題（1日10問・答えと解説つき）<br><small>Day は全員共通の日程で、毎日20時に1つずつ開きます<span id="d11" hidden>（Day 11 は 11月13日 20:00）</span>。会員サイトでも Day 1 から解きます（無料ページの記録は引きつがれません）</small></li>
             <li>レベルテスト（30問・リスニングつき）と全問の解説</li>
             <li>試験日に合わせた毎日の ToDo と、時間ごとのカレンダー</li>
             <li>ToDo・予定の前にスマホへ通知</li>
@@ -829,5 +829,6 @@ footer .links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
 })();
 </script>
 <script src="/nav.js" defer></script>
+<script>(function(){var e=document.getElementById("d11");if(e&&Date.now()<Date.parse("2026-11-13T20:00:00+09:00"))e.hidden=false;})();</script>
 </body>
 </html>
