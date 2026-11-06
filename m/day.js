@@ -29,7 +29,7 @@
     ".q:not(.answered) .opts li.pick:focus-visible{outline:2px solid #FF6A1A;outline-offset:2px}" +
     ".q.answered .opts li.ok{border-color:#3DD68C!important;background:rgba(61,214,140,.13)!important}" +
     ".q.answered .opts li.mine:not(.ok){border-color:#FF6464!important;background:rgba(255,100,100,.12)!important}" +
-    ".q.answered .opts li{cursor:default}" +
+    ".q.answered .opts li{cursor:default}.q.waiting .opts li{cursor:progress;opacity:.7}" +
     ".vd{margin:10px 0 0 42px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}" +
     ".vd.r{color:#3DD68C}.vd.w{color:#FF8A8A}.vd span{font-weight:500;color:#BDBDBD;font-size:14px}" +
     ".qhint{margin:8px 0 0 42px;font-size:13px;color:#A6A6A6}" +
@@ -141,11 +141,19 @@
     fetch("/day/" + DAY + "/answer", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q: q.id, k: k }), credentials: "same-origin" })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
-        if (!x.ok) return fail(x.j.error === "member" ? "会員の期間が終わっています。アカウントの画面を確かめてください。" : x.j.error === "locked" ? "この Day はまだ開いていないか、前の Day が終わっていません。" : "ページを開き直してから、もう一度答えてください。");
+        if (!x.ok) { if (q.classList.contains("waiting")) { q.classList.remove("waiting"); } return fail(x.j.error === "member" ? "会員の期間が終わっています。アカウントの画面を確かめてください。" : x.j.error === "locked" ? "この Day はまだ開いていないか、前の Day が終わっていません。" : "ページを開き直してから、もう一度答えてください。"); }
+        // 会員サイト：正解の印と解説は、答えたあとにサーバーから届く
+        if (q.classList.contains("waiting")) {
+          q.classList.remove("waiting");
+          if (typeof x.j.ok === "number") { var okEl = q.querySelector('.opts li[data-k="' + x.j.ok + '"]'); if (okEl) okEl.classList.add("ok"); }
+          var pd = q.querySelector("details.pend");
+          if (pd && x.j.exp) { var tmp = document.createElement("div"); tmp.innerHTML = x.j.exp; var nd = tmp.firstElementChild; if (nd) pd.replaceWith(nd); }
+          show(q, k);
+        }
         if (x.j.done) serverDoneSeen = true;
         if (my === sendNo || serverDoneSeen) update(serverDoneSeen || (x.j.answered >= x.j.total));
       })
-      .catch(function () { fail("通信を確かめて、ページを開き直してください。"); });
+      .catch(function () { q.classList.remove("waiting"); fail("通信を確かめて、ページを開き直してください。"); });
   }
   qs.forEach(function (q) {
     var lis = q.querySelectorAll(".opts li");
@@ -158,7 +166,13 @@
       li.classList.add("pick");
       li.setAttribute("role", "button");
       li.setAttribute("tabindex", "0");
-      var pick = function () { if (q.classList.contains("answered")) return; var k = +li.dataset.k; show(q, k); send(q, k); };
+      var pick = function () {
+        if (q.classList.contains("answered") || q.classList.contains("waiting")) return;
+        var k = +li.dataset.k;
+        // 解説がまだ届いていない（会員サイト）ときは、サーバーの返事を待ってから開く
+        if (MODE !== "local" && q.querySelector("details.pend")) { q.classList.add("waiting"); li.classList.add("mine"); send(q, k); return; }
+        show(q, k); send(q, k);
+      };
       li.addEventListener("click", pick);
       li.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
     });

@@ -110,7 +110,7 @@ def main():
                 run(job)
         except Exception as e:  # noqa: BLE001  ネットが一時的に切れても止まらない
             print(datetime.now(), "loop error", repr(e), flush=True); time.sleep(10)
-        time.sleep(2)
+        time.sleep(5)   # 受付を見に来る間隔（Cloudflare の無料枠の回数を使いすぎないように）
 
 if __name__ == "__main__":
     main()
